@@ -1,0 +1,28 @@
+{
+  "name": "brownsea-orm",
+  "version": "0.0.1",
+  "description": "An Object Mapper for the scouts.org API",
+  "main": "dist/index.js",
+   "scripts": {
+    "pretest": "npm run build",
+    "test": "npm run test:spec",
+    "build:tsc": "ntsc",
+    "build": "npm run build:tsc",
+    "postinstall": "typings install && npm prune && npm run build",
+    "reinstall": "npm cache clean && npm install",
+    "test:spec": "mocha ./dist/**/*.spec.js",
+    "clean": "rm -rf ./dist"
+  },
+ "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.5.3",
+    "ntypescript": "1.201606150105.1",
+    "typings": "^1.2.0"
+  },
+  "keywords": [
+    "scouts",
+    "orm"
+  ],
+  "author": "probinson@nextfaze.com",
+  "license": "MIT"
+}
