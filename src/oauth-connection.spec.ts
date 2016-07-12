@@ -1,7 +1,11 @@
+import * as dotenv from 'dotenv';
 import { expect } from 'chai';
 import { OauthConnection } from './oauth-connection';
 import { MockOauth } from './mock-oauth';
 import { mockRequest} from './mock-request';
+
+dotenv.config({silent: true});
+
 describe('Connector For Scouts Oauth Implementation', () => {
     let connection: OauthConnection;
     before(() => {
@@ -56,8 +60,3 @@ describe('Connector For Scouts Oauth Implementation', () => {
         .catch(done);
     });
 })
-// describe('another test', () => {
-//     it('should run a test', () => {
-//         console.log('im running toooooo')
-//     })
-// })

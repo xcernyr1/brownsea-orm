@@ -1,17 +1,18 @@
+import * as dotenv from 'dotenv';
 import { expect } from 'chai';
 import { scoutsOauthBuilder } from './oauth-builder';
 import { OauthConnection } from './oauth-connection';
 import * as request from 'request';
-import { OAUTH_ACCESS_TOKEN, OAUTH_ACCESS_TOKEN_SECRET, KEY, SECRET} from './test.config';
+
 var OAuth = require('oauth').OAuth;
 
-
+dotenv.config({silent: true});
 describe('Scouts Staging Server Test', function () {
    
     let connection: OauthConnection;
     before (function (done) {
          this.timeout(30000);
-        connection  = scoutsOauthBuilder(OAuth, request, KEY, SECRET, OAUTH_ACCESS_TOKEN, OAUTH_ACCESS_TOKEN_SECRET);
+        connection  = scoutsOauthBuilder(OAuth, request, {key: process.env.KEY, secret: process.env.SECRET, username: process.env.USERNAME, password: process.env.PASS, host: process.env.HOST});
         connection.connect()
         .then(() => {
             done();
@@ -25,7 +26,6 @@ describe('Scouts Staging Server Test', function () {
     it ('.get /profile/system/connect', (done) => {
         connection.get('profile/taxonomy_term/3.json')
         .then(payload => {
-            console.log(payload.data)
             expect(payload.data).to.not.be.empty;
             done();
         })

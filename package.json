@@ -28,6 +28,7 @@
   "author": "probinson@nextfaze.com",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^2.0.0",
     "request": "^2.73.0"
   }
 }

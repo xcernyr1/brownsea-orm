@@ -64,17 +64,17 @@ export class OauthConnection {
         return new Promise((resolve, reject) => {
             request.post(this.host + 'login', { form: {
                     'form_id':'user_login',
-                    'name':this.username,
+                    'name': this.username,
                     'op':'Log in',
                     'pass': this.password,
             }}, (err, res, body) => {
-                if (err) return reject(new Error(JSON.stringify(err)));
+                if (err) return reject('Login Error' + new Error(JSON.stringify(err)));
                 request.post(`${this.host}oauth/authorize?oauth_token=${payload.token}`, {form: {
                     "form_id": "oauth_common_form_authorize_override",
                     "levels[default]": 1,
                     "op": "Grant access"
-                }}, (err, res, body) => {
-                    if (err) return reject(new Error(JSON.stringify(err)));
+                }}, (err, res2, body) => {
+                    if (err) return reject(new Error('Authorise Error' + JSON.stringify(err)));
                     resolve(payload);
                 });
             })
@@ -83,7 +83,7 @@ export class OauthConnection {
     request ():Promise<{token:string, secret:string}> {
         return new Promise((resolve, reject) => {
             this.oauth.getOAuthRequestToken((err, token, secret) => {
-                if (err) return reject(new Error(JSON.stringify(err)));
+                if (err) return reject('Request Error' + new Error(JSON.stringify(err)));
                 resolve({ token, secret })
             })
         })
@@ -91,7 +91,7 @@ export class OauthConnection {
     access (payload):Promise<{access_token:string, access_secret:string}> {
         return new Promise((resolve, reject) => {
             this.oauth.getOAuthAccessToken(payload.token, payload.secret, (err, access_token, access_secret) => {
-                if (err) return reject(new Error(JSON.stringify(err)));
+                if (err) return reject('Access Error' + new Error(JSON.stringify(err)));
                 resolve({ access_token, access_secret });
             })
         }) 
