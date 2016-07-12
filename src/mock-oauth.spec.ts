@@ -1,4 +1,4 @@
-import {MockOauth} from './mock-oauth'
+import { MockOauth } from './mock-oauth'
 import { expect } from 'chai';
 describe('MockOauth', function () {
     before(() => {
@@ -19,15 +19,41 @@ describe('MockOauth', function () {
         })
     })
     it('._perfomSecureRequest', (done) => {
-        this.oauth._perfomSecureRequest('OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', 'GET', 'http://fake.com/profile/node/1.json?oauth_token=OAUTHACCESSTOKEN', undefined, undefined, undefined, (err, res) => {
+        this.oauth._perfomSecureRequest('OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', 'GET', 'http://fake.com/profile/node/1.json', undefined, undefined, undefined, (err, data, res) => {
             expect(err).not.to.exist;
+            expect(data).to.be.empty;
             expect(res).to.be.empty;
             done();
         })
     })
     it('.get', (done) => {
-        this.oauth.get('http://fake.com/profile/node/1.json?oauth_token=OAUTHACCESSTOKEN', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', (err, res) => {
+        this.oauth.get('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', (err, data, res) => {
             expect(err).not.to.exist;
+            expect(data).to.be.empty;
+            expect(res).to.be.empty;
+            done();
+        })
+    })
+    it('.delete', (done) => {
+        this.oauth.get('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', (err, data, res) => {
+            expect(err).not.to.exist;
+            expect(data).to.be.empty;
+            expect(res).to.be.empty;
+            done();
+        })
+    })
+    it('.post', (done) => {
+        this.oauth.post('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', {}, 'application/json', (err, data, res) => {
+            expect(err).not.to.exist;
+            expect(data).to.be.empty;
+            expect(res).to.be.empty;
+            done();
+        })
+    })
+    it('.put', (done) => {
+        this.oauth.put('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', {}, 'application/json', (err, data, res) => {
+            expect(err).not.to.exist;
+            expect(data).to.be.empty;
             expect(res).to.be.empty;
             done();
         })

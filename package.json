@@ -3,20 +3,22 @@
   "version": "0.0.1",
   "description": "An Object Mapper for the scouts.org API",
   "main": "dist/index.js",
-   "scripts": {
+  "scripts": {
     "pretest": "npm run build",
-    "test": "npm run test:spec",
+    "test": "npm run test:spec && npm run test:e2e",
     "build:tsc": "ntsc",
     "build": "npm run build:tsc",
     "postinstall": "typings install && npm prune && npm run build",
     "reinstall": "npm cache clean && npm install",
     "test:spec": "mocha ./dist/**/*.spec.js",
+    "test:e2e": "mocha ./dist/**/*.e2e.js",
     "clean": "rm -rf ./dist"
   },
- "devDependencies": {
+  "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.5.3",
     "ntypescript": "1.201606150105.1",
+    "oauth": "^0.9.14",
     "typings": "^1.2.0"
   },
   "keywords": [
@@ -24,5 +26,8 @@
     "orm"
   ],
   "author": "probinson@nextfaze.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.73.0"
+  }
 }
