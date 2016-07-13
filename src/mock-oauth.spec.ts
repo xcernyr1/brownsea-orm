@@ -21,7 +21,7 @@ describe('MockOauth', function () {
     it('._perfomSecureRequest', (done) => {
         this.oauth._perfomSecureRequest('OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', 'GET', 'http://fake.com/profile/node/1.json', undefined, undefined, undefined, (err, data, res) => {
             expect(err).not.to.exist;
-            expect(data).to.be.empty;
+            expect(data).to.be.string;
             expect(res).to.be.empty;
             done();
         })
@@ -29,7 +29,7 @@ describe('MockOauth', function () {
     it('.get', (done) => {
         this.oauth.get('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', (err, data, res) => {
             expect(err).not.to.exist;
-            expect(data).to.be.empty;
+            expect(data).to.be.string;
             expect(res).to.be.empty;
             done();
         })
@@ -37,7 +37,7 @@ describe('MockOauth', function () {
     it('.delete', (done) => {
         this.oauth.get('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', (err, data, res) => {
             expect(err).not.to.exist;
-            expect(data).to.be.empty;
+            expect(data).to.be.string;
             expect(res).to.be.empty;
             done();
         })
@@ -45,7 +45,7 @@ describe('MockOauth', function () {
     it('.post', (done) => {
         this.oauth.post('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', {}, 'application/json', (err, data, res) => {
             expect(err).not.to.exist;
-            expect(data).to.be.empty;
+            expect(data).to.be.string;
             expect(res).to.be.empty;
             done();
         })
@@ -53,7 +53,7 @@ describe('MockOauth', function () {
     it('.put', (done) => {
         this.oauth.put('http://fake.com/profile/node/1.json', 'OAUTHACCESSTOKEN', 'OAUTHACCESSTOKENSECRET', {}, 'application/json', (err, data, res) => {
             expect(err).not.to.exist;
-            expect(data).to.be.empty;
+            expect(data).to.be.string;
             expect(res).to.be.empty;
             done();
         })

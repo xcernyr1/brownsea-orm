@@ -4,5 +4,8 @@ export var mockRequest = {
     },
     defaults: function () {
         return this;
+    },
+    jar: () => {
+        return this;
     }
 }

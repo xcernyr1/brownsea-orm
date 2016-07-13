@@ -1,7 +1,15 @@
+export interface OauthConnectionOption {
+    username: string
+    password: string
+    auth_access_token?: string
+    auth_access_secret?: string
+}
 export class OauthConnection {
     private access_token: string;
     private access_secret: string;
-    constructor (public oauth: any, public req: any, public host, public username?: string, public password?: string) {}
+        public counter:number = 0;
+    constructor (public oauth: any, public req: any, public host, public username?: string, public password?: string) {
+    }
     connect ():Promise<{connected: boolean}> {
         return new Promise ((resolve, reject) => {
             this.request()
@@ -16,6 +24,12 @@ export class OauthConnection {
                     resolve({connected: true});
                 })
                 .catch(err => {
+                     if (err)    {
+                    this.counter++;
+                    console.log(this.counter);
+                    if (this.counter > 1000) return reject('Access Error' + new Error(JSON.stringify(err)));
+                    return this.connect() 
+                }
                     reject(new Error('Failed to Connect' + err));
                 })
             })
@@ -28,7 +42,7 @@ export class OauthConnection {
             if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
             this.oauth.get(this.host + url, this.access_token, this.access_secret, (err, data, res) => {
                 if (err) return reject(new Error(JSON.stringify(err)));
-                resolve({data, res});
+                resolve({data: JSON.parse(data), res});
             })
         }) 
     }
@@ -37,7 +51,7 @@ export class OauthConnection {
             if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
             this.oauth.post(this.host + url, this.access_token, this.access_secret, body, post_content_type, (err, data, res) => {
                 if (err) return reject(new Error(JSON.stringify(err)));
-                resolve({data, res});
+                resolve({data: JSON.parse(data), res});
             })
         })    
     }
@@ -46,7 +60,7 @@ export class OauthConnection {
             if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
             this.oauth.put(this.host + url, this.access_token, this.access_secret, body, post_content_type, (err, data, res) => {
                 if (err) return reject(new Error(JSON.stringify(err)));
-                resolve({data, res});
+                resolve({data: JSON.parse(data), res});
             })
         })
     }
@@ -55,14 +69,15 @@ export class OauthConnection {
             if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
             this.oauth.delete(this.host + url, this.access_token, this.access_secret, (err, data, res) => {
                 if (err) return reject(new Error(JSON.stringify(err)));
-                resolve({data, res});
+                resolve({data: JSON.parse(data), res});
             })
         })
     }
     private authorise (payload:any) {
-        let request = this.req.defaults({jar: true})
+        let jar = this.req.jar()
+        let request = this.req.defaults({jar: jar})
         return new Promise((resolve, reject) => {
-            request.post(this.host + 'login', { form: {
+            request.post(this.host + `/modal_forms/ajax/login?destination=/oauth/authorize&oauth_token=${payload.token}`, { form: {
                     'form_id':'user_login',
                     'name': this.username,
                     'op':'Log in',

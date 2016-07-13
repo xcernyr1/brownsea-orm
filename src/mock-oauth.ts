@@ -18,7 +18,7 @@ export class MockOauth {
     }
     _perfomSecureRequest (oauth_token:string, oauth_token_secret:string, method:string, url:string, extra_params:any, post_body:any, post_content_type:any,  cb:Function) {
 
-        if (oauth_token_secret === this.oAuthAccessTokenSecret) return cb(null, post_body ? post_body : {}, {});
+        if (oauth_token_secret === this.oAuthAccessTokenSecret) return cb(null, post_body ? JSON.stringify(post_body) : JSON.stringify({}), {});
         return cb(new Error());
         
     }
