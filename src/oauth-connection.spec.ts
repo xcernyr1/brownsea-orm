@@ -46,7 +46,7 @@ describe('Connector For Scouts Oauth Implementation', () => {
     it('.put request', (done) => {
         connection.put('url', {name: 'nextfaze'})
         .then(payload => {
-            expect(payload.data).to.haveOwnProperty('name', 'nextfaze' );
+            expect(payload.data.name).to.equal('nextfaze' );
             done();
         })
         .catch(done);
@@ -54,7 +54,7 @@ describe('Connector For Scouts Oauth Implementation', () => {
     it('.post request', (done) => {
         connection.post('url', {name: 'nextfaze'})
         .then(payload => {
-            expect(payload.data).to.haveOwnProperty('name', 'nextfaze' );
+            expect(payload.data.name).to.equal('nextfaze' );
             done();
         })
         .catch(done);

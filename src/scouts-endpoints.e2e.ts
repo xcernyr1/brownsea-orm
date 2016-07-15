@@ -1,3 +1,7 @@
+/**
+ * Tests The Scouts Endpoints in current api docs in the Google Drive named API consumer - documentation
+ */
+
 import  * as dotenv from  'dotenv';
 import { expect } from  'chai';
 import { scoutsOauthBuilder } from './oauth-builder';
@@ -34,17 +38,28 @@ describe('Scouts Staging Server Test', function () {
         let uid;
         it('register POST /profile/user/register.json', done => {
             connection.post('profile/user/register.json', {
-                'username': 'services_user_paul1',
-                'password': 'password',
-                'mail': 'services_user_paul@example.com',
-            })
+                'name': 'services_user_paul2',
+                'pass[pass1]': 'password',
+                'pass[pass2]': 'password',
+                'field_first_name[und][0][value]': 'Paul',
+                'field_last_name[und][0][value]': 'Robinson',
+                'field_user_country[und]': 84,
+                'terms': 1,
+                'op': 'Create new account',
+                'timezone' : '',
+                'mail': 'services_user_paul2@example.com',
+            }, 'multipart/form-data')
                 .then(payload => {
                 let a = payload.data;
                 uid = a.uid;
                 expect(payload.data).to.not.be.empty;
                 done();
             })
-                .catch(done);
+                .catch(err => {
+                    debugger
+                    console.log(err);
+                    done();
+                });
         });
         it(`retrieve GET /profile/user/1.json`, done => {
             connection.get(`profile/user/1.json`)
