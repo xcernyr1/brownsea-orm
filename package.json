@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "An Object Mapper for the scouts.org API",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
     "test": "npm run test:spec && npm run test:e2e",
