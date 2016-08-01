@@ -52,34 +52,34 @@ export class OauthConnection {
             })
         }) 
     }
-    //  post (url:string, body: any, post_content_type?: string):Promise<{data:any, res:any}> {
-    //     return new Promise((resolve, reject) => {
-    //         if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
-    //         this.oauth.post(this.host + url, this.access_token, this.access_secret, body, post_content_type, (err, data, res) => {
-    //             if (err) return reject(this._errorHandler(err));
-    //             resolve({data: JSON.parse(data), res});
-    //         })
-    //     })    
-    // }
-    post (url:string, body: any, post_content_type?: string):Promise<{data:any, res:any}> {
+     post (url:string, body: any, post_content_type?: string):Promise<{data:any, res:any}> {
         return new Promise((resolve, reject) => {
             if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
-            let req = {
-                url: this.host + url,
-                oauth: {
-                    consumer_key: process.env.KEY,
-                    consumer_secret: process.env.SECRET,
-                    token: this.access_token,
-                    token_secret: this.access_secret
-                },
-                formData: body
-            }
-            this.req.post(req, (err, data, res) => {
+            this.oauth.post(this.host + url, this.access_token, this.access_secret, body, post_content_type, (err, data, res) => {
                 if (err) return reject(this._errorHandler(err));
-                resolve({ data, res});
+                resolve({data: JSON.parse(data), res});
             })
         })    
     }
+    // post (url:string, body: any, post_content_type?: string):Promise<{data:any, res:any}> {
+    //     return new Promise((resolve, reject) => {
+    //         if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
+    //         let req = {
+    //             url: this.host + url,
+    //             oauth: {
+    //                 consumer_key: process.env.KEY,
+    //                 consumer_secret: process.env.SECRET,
+    //                 token: this.access_token,
+    //                 token_secret: this.access_secret
+    //             },
+    //             formData: body
+    //         }
+    //         this.req.post(req, (err, data, res) => {
+    //             if (err) return reject(this._errorHandler(err));
+    //             resolve({ data, res});
+    //         })
+    //     })    
+    // }
     put (url:string, body: any, post_content_type?: string):Promise<{data:any, res:any}> {
         return new Promise((resolve, reject) => {
             if (!this.isAuthorised) console.warn('It appears that access_token || access_secret are not set');
