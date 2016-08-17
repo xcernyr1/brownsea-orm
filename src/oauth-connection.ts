@@ -152,7 +152,7 @@ export class OauthConnection {
         }) 
     }
     private _customLoginError (payload:{token:string, secret:string}) {
-           console.log(`Navigate to this and authorise:\n${process.env.HOST}oauth/authorization?oauth_token=${payload.token}`);
+           console.log(`Navigate to this and authorise:\n${process.env.HOST}oauth/authorize?oauth_token=${payload.token}`);
     }
     private _errorHandler (err) {
         switch (err.statusCode) {
