@@ -7,7 +7,7 @@
   "scripts": {
     "pretest": "npm run build",
     "test": "npm run test:spec && npm run test:e2e",
-    "build:tsc": "ntsc",
+    "build:tsc": "rm -rf dist && ntsc",
     "build": "npm run build:tsc",
     "postinstall": "typings install && npm prune && npm run build",
     "reinstall": "npm cache clean && npm install",
