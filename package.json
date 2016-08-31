@@ -9,7 +9,7 @@
     "test": "npm run test:spec && npm run test:e2e",
     "build:tsc": "rm -rf dist && ntsc",
     "build": "npm run build:tsc",
-    "pretinstall": "typings install && npm prune && npm run build",
+    "preinstall": "typings install && npm prune && npm run build",
     "reinstall": "npm cache clean && npm install",
     "test:spec": "mocha ./dist/**/*.spec.js",
     "test:e2e": "mocha ./dist/**/*.e2e.js",
