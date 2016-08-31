@@ -1,15 +1,12 @@
 {
   "name": "brownsea-orm",
-  "dependencies": {},
+  "dependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160415060238"
+  },
   "globalDependencies": {
     "form-data": "registry:dt/form-data#0.0.0+20160316155526",
     "node": "registry:dt/node#6.0.0+20160621231320",
-    "request": "registry:dt/request#0.0.0+20160524135346"
-  },
-  "devDependencies": {
-    "chai": "registry:npm/chai#3.5.0+20160415060238"
-  },
-  "globalDevDependencies": {
+    "request": "registry:dt/request#0.0.0+20160524135346",
     "mocha": "registry:dt/mocha#2.2.5+20160619032855",
     "dotenv": "registry:dt/dotenv#2.0.0+20160327131627"
   }
