@@ -18,7 +18,7 @@ export class CustomError extends Error {
 }
 export class Error500 extends CustomError {
     constructor (body: ErrorOptions = {}) {
-        let options = Object.assign({}, {
+        let options = (<any>Object).assign({}, {
             status: 500,
             message: `Unknown Server Error`
         }, body)
@@ -27,7 +27,7 @@ export class Error500 extends CustomError {
 }
 export class Error404 extends CustomError {
     constructor (body: ErrorOptions = {}) {
-        let options = Object.assign({}, {
+        let options = (<any>Object).assign({}, {
             status: 404,
             message: `Resource Not Found`
         }, body)
@@ -36,7 +36,7 @@ export class Error404 extends CustomError {
 }
 export class Error400 extends CustomError {
     constructor (body: ErrorOptions = {}) {
-        let options = Object.assign({}, {
+        let options = (<any>Object).assign({}, {
             status: 400,
             message: `Validation Errors`
         }, body)
