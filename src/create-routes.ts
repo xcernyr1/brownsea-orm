@@ -1,4 +1,4 @@
-var ensureLoggedIn = require('connect-ensure-login');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 export function createRoutes (app) {
     app.get('/', function(req, res, next) {
     res.render('pages/index', {user:
