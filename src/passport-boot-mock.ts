@@ -3,7 +3,7 @@ export function bootPassportMock (app, accessToken, user, identity, credential) 
     let config = {
         "scout": {
             "strategy": "MockStrategy",
-            "module": "passport-drupal",
+            "module": "./strategy.js",
             "resourceEndpoint": "profile/system/connect.json",
             "authPath": "/auth/local",
             "callbackPath": "/auth/scout/callback",

@@ -7,7 +7,7 @@ export function createRoutes (app) {
     });
   });
 
-app.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
+app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), function(req, res, next) {
   res.render('pages/loginProfiles', {
     user: req.user,
     url: req.url,
@@ -19,24 +19,5 @@ app.get('/local', function(req, res, next) {
     user: req.user,
     url: req.url,
   });
-});
-
-app.get('/signup', function(req, res, next) {
-  res.render('pages/signup', {
-    user: req.user,
-    url: req.url,
-  });
-});
-
-app.get('/login', function(req, res, next) {
-  res.render('pages/login', {
-    user: req.user,
-    url: req.url,
-  });
-});
-
-app.get('/auth/logout', function(req, res, next) {
-  req.logout();
-  res.redirect('/');
 });
 }
