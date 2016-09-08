@@ -30,6 +30,8 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^2.0.0",
+    "passport-drupal": "git@github.com:NextFaze/passport-drupal.git",
+    "loopback-component-passport": "git@github.com:NextFaze/loopback-component-passport.git",
     "request": "^2.73.0"
   }
 }
