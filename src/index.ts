@@ -6,3 +6,4 @@ export * from './mock-oauth';
 export * from './mock-request';
 export * from './user-model';
 export * from './oauth-builder';
+export * from './passport-boot-script';
