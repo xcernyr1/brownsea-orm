@@ -30,7 +30,7 @@ export function createOauthRoutes (app) {
             oauth_token_secret: 'Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik'
         }))
     })
-    app.post('profile/system/connect.json', (req, res, next) => {
+    app.post('/profile/system/connect.json', (req, res, next) => {
         res.json(MockUser());
     })
     app.get('/profile/taxonomy_term/:id', (req, res, next) => {
