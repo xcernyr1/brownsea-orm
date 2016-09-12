@@ -5,7 +5,7 @@ export function bootPassportMock (app, accessToken, user, identity, credential) 
         "scout": {
             "strategy": "DrupalStrategy",
             "module": "passport-drupal",
-            "resourceEndpoint": "/profile/system/connect.json",
+            "resourceEndpoint": "profile/system/connect.json",
             "authPath": "/auth/local",
             "callbackPath": "/oauth/mock/authorize",
             "successRedirect": "/auth/account",
