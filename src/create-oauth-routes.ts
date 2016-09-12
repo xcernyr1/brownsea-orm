@@ -5,7 +5,6 @@ import { MockUser } from './mock-scout-user';
 var querystring = require('querystring');
 
 export function createOauthRoutes (app) {
-    let _cache = {};
     app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), (req, res, next) => {
         res.render('pages/loginProfiles', {
             user: req.user,
@@ -20,7 +19,6 @@ export function createOauthRoutes (app) {
         });
     })
     app.post('/oauth/access_token', (req, res, next) => {
-        _cache[req.query.oauth_token] = MockUser();
         res.send(querystring.encode({
             oauth_token: req.query.oauth_token,
             oauth_token_secret: req.query.oauth_token
