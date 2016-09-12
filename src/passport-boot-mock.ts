@@ -3,8 +3,8 @@ import { createOauthRoutes } from './create-oauth-routes';
 export function bootPassportMock (app, accessToken, user, identity, credential) {
     let config = {
         "scout": {
-            "strategy": "MockStrategy",
-            "module": "./strategy",
+            "strategy": "DrupalStrategy",
+            "module": "passport-drupal",
             "resourceEndpoint": "profile/system/connect.json",
             "authPath": "/auth/local",
             "callbackPath": "/auth/scout/callback",
@@ -12,7 +12,7 @@ export function bootPassportMock (app, accessToken, user, identity, credential) 
             "failureRedirect": "/login",
             "failureFlash": true,
             "scope": ["email"],
-            "providerURL": "http://worldscoutstg.prod.acquia-sites.com",
+            "providerURL": "0.0.0.0:3000",
             "consumerKey": "oSNcefTdBZzXuuWf9FfG6nJkraWxbf66",
             "consumerSecret": "iKkp2FKzHB7Vp4PzbtRNGGXgFtKGNPGs",
             "profileEmail": true,
