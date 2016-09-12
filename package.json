@@ -32,7 +32,7 @@
     "chance": "^1.0.4",
     "connect-ensure-login": "^0.1.1",
     "dotenv": "^2.0.0",
-    "loopback-component-passport": "^2.2.0",
+    "loopback-component-passport": "git@github.com:NextFaze/loopback-component-passport.git",
     "passport-drupal": "git@github.com:NextFaze/passport-drupal.git",
     "querystring": "^0.2.0",
     "request": "^2.73.0"
