@@ -31,7 +31,7 @@ export function createOauthRoutes (app) {
         }))
     })
     app.post('/profile/system/connect.json', (req, res, next) => {
-        res.json(MockUser());
+        res.send(MockUser());
     })
     app.get('/profile/taxonomy_term/:id', (req, res, next) => {
         res.send(JSON.stringify({name: 'Albania'}));
