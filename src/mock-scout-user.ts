@@ -23,9 +23,7 @@ export function MockUser (roles = { "2": "authenticated user" }) {
           "l10n_client_disabled": false,
           "mimemail_textonly": 0
         },
-        "roles": {
-          "2": "authenticated user"
-        },
+        "roles": roles,
         "field_user_country": {
           "und": [
             {

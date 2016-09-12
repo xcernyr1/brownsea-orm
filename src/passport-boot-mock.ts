@@ -1,4 +1,5 @@
 import { configurePassport } from './passport-boot-script';
+import { createOauthRoutes } from './create-oauth-routes'; 
 export function bootPassportMock (app, accessToken, user, identity, credential) {
     let config = {
         "scout": {
@@ -19,5 +20,6 @@ export function bootPassportMock (app, accessToken, user, identity, credential) 
             "name": true
         }
     };
-    configurePassport(app, accessToken, user, identity, credential, config)
+    configurePassport(app, accessToken, user, identity, credential, config);
+    createOauthRoutes(app);
 }
