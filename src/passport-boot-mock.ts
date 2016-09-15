@@ -1,6 +1,6 @@
 import { configurePassport } from './passport-boot-script';
 import { createOauthRoutes } from './create-oauth-routes'; 
-export function bootPassportMock (app, accessToken, user, identity, credential, callbackPath) {
+export function bootPassportMock (app, accessToken, user, identity, credential) {
     let config = {
         "scout": {
             "strategy": "DrupalStrategy",
