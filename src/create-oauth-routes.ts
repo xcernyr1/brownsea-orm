@@ -4,8 +4,9 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 import { MockUser } from './mock-scout-user';
 var querystring = require('querystring');
 
-export function createOauthRoutes (app) {
+export function createOauthRoutes (app, callback) {
     app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), (req, res, next) => {
+        res.redirect(`${callback}?userId=${req.user.id}&accessToken=${req.accessToken.id}`)
         res.render('pages/loginProfiles', {
             user: req.user,
             url: req.url,
