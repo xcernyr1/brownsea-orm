@@ -4,7 +4,7 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 import { MockUser } from './mock-scout-user';
 var querystring = require('querystring');
 
-export function createOauthRoutes (app, callback) {
+export function createOauthRoutes (app) {
     app.get('/oauth/authorize', (req, res, next) => {
         res.render('pages/mock', {
             user: req.user,
