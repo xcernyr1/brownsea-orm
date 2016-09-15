@@ -21,5 +21,5 @@ export function bootPassportMock (app, accessToken, user, identity, credential, 
         }
     };
     configurePassport(app, accessToken, user, identity, credential, config);
-    createOauthRoutes(app, callbackPath);
+    createOauthRoutes(app);
 }

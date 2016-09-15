@@ -6,11 +6,9 @@ export function createRoutes (app) {
             url: req.url,
         });
     });
-    app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), function (req, res, next) {
-        res.render('pages/loginProfiles', {
-            user: req.user,
-            url: req.url,
-        });
+    app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), (req, res, next) => {
+        let referer = req.session.oauth.referer
+            res.redirect(`${referer}?userId=${req.user.id}&accessToken=${req.accessToken.id}`)
     });
     app.get('/login', function (req, res, next) {
         res.render('pages/login', {
