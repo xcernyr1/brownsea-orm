@@ -8,7 +8,8 @@ export function createRoutes (app) {
     });
     app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), (req, res, next) => {
         let referer = req.session.oauth.referer
-            res.redirect(`${referer}?userId=${req.user.id}&accessToken=${req.accessToken.id}`)
+        res.redirect(referer)
+        delete req.session.oauth
     });
     app.get('/login', function (req, res, next) {
         res.render('pages/login', {
