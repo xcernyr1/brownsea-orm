@@ -33,7 +33,7 @@
     "connect-ensure-login": "^0.1.1",
     "dotenv": "^2.0.0",
     "loopback-component-passport": "https://github.com/NextFaze/loopback-component-passport.git",
-    "passport-drupal": "https://github.com:NextFaze/passport-drupal.git",
+    "passport-drupal": "https://github.com/NextFaze/passport-drupal.git",
     "querystring": "^0.2.0",
     "request": "^2.73.0"
   }
