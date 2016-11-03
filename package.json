@@ -9,7 +9,6 @@
     "test": "npm run test:spec && npm run test:e2e",
     "build:tsc": "npm run clean && tsc",
     "build": "npm run build:tsc",
-    "postinstall": "tsc",
     "reinstall": "npm cache clean && npm install",
     "test:spec": "mocha ./dist/**/*.spec.js",
     "test:e2e": "mocha ./dist/**/*.e2e.js",
