@@ -1,10 +1,41 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
         "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceRoot": "src",
         "outDir": "dist",
-        "rootDir": "src",
-        "declaration": true,
-        "lib": ["dom", "es5", "es2015.promise", "es2015.collection", "es2015.core", "es2015"]
-    }
+        "lib": [
+            "es6",
+            "es2015"
+        ],
+        "sourceMap": true,
+        "pretty": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules"
+        ],
+        "types": [
+            "node",
+            "form-data",
+            "mocha",
+            "request",
+            "dotenv",
+            "chai"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compileOnSave": false
 }

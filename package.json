@@ -1,15 +1,15 @@
 {
   "name": "brownsea-orm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An Object Mapper for the scouts.org API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
     "test": "npm run test:spec && npm run test:e2e",
-    "build:tsc": "rm -rf dist && ntsc",
+    "build:tsc": "npm run clean && tsc",
     "build": "npm run build:tsc",
-    "postinstall": "typings install && npm prune && npm run build",
+    "postinstall": "npm prune && npm run build",
     "reinstall": "npm cache clean && npm install",
     "test:spec": "mocha ./dist/**/*.spec.js",
     "test:e2e": "mocha ./dist/**/*.e2e.js",
@@ -18,9 +18,7 @@
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.5.3",
-    "ntypescript": "1.201606150105.1",
-    "oauth": "^0.9.14",
-    "typings": "^1.2.0"
+    "oauth": "^0.9.14"
   },
   "keywords": [
     "scouts",
@@ -29,6 +27,7 @@
   "author": "probinson@nextfaze.com",
   "license": "MIT",
   "dependencies": {
+    "@types/chai": "^3.4.34",
     "@types/chance": "^0.7.30",
     "@types/dotenv": "^2.0.18",
     "@types/form-data": "0.0.32",
@@ -41,6 +40,7 @@
     "loopback-component-passport": "https://github.com/NextFaze/loopback-component-passport.git",
     "passport-drupal": "https://github.com/NextFaze/passport-drupal.git",
     "querystring": "^0.2.0",
-    "request": "^2.73.0"
+    "request": "^2.73.0",
+    "typescript": "^2.0.6"
   }
 }
