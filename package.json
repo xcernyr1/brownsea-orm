@@ -29,6 +29,12 @@
   "author": "probinson@nextfaze.com",
   "license": "MIT",
   "dependencies": {
+    "@types/chance": "^0.7.30",
+    "@types/dotenv": "^2.0.18",
+    "@types/form-data": "0.0.32",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.46",
+    "@types/request": "0.0.32",
     "chance": "^1.0.4",
     "connect-ensure-login": "^0.1.1",
     "dotenv": "^2.0.0",
