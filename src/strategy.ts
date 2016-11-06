@@ -54,7 +54,6 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
 };
 MockStrategy.prototype.authenticate = function (req, options) {
     var self = this;
-    debugger
     let a = self._verify.length;
     function verified(err, user, info) {
         if (err) { return self.error(err); }
