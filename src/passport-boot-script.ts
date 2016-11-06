@@ -17,7 +17,6 @@ export function configurePassport(app, accessToken, user, identity, credential, 
   for (var s in config) {
     var c = config[s];
     c.session = c.session !== false;
-    if (s === 'scout') c.strategy = Strategy
     passportConfigurator.configureProvider(s, c);
     createRoutes(app, c.options);
   }

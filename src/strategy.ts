@@ -7,15 +7,15 @@ function MockStrategy(options, verify) {
     Strategy.call(this);
 }
 function ScoutStrategy(options, verify) {
-    this.hostname = options.hostname
+    this._userProfile = options.userProfile
     this._verify = verify;
-    Strategy.call(this);
+    Strategy.call(this, options, verify);
 }
 util.inherits(MockStrategy, Strategy);
-util.inherits(OAuth2Strategy, OAuth2Strategy);
+util.inherits(ScoutStrategy, OAuth2Strategy);
 ScoutStrategy.prototype.userProfile = function (accessToken, done) {
     var self = this
-    this._oauth2.get(`${this.hostname}/api/current-user`, accessToken, function (err, body, other) {
+    this._oauth2.get(`${this._userProfile}/api/current-user`, accessToken, function (err, body, other) {
         if (err) return done(err)
         try {
             var json = JSON.parse(body)
@@ -24,7 +24,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
         catch (err) {
             return done(err)
         }
-        self._oauth2.get(`${this.hostname}/api/users/${id}`, accessToken, function (err, body, other) {
+        self._oauth2.get(`${this._userProfile}/api/users/${id}`, accessToken, function (err, body, other) {
             if (err) return done(err)
             try {
                 var json = JSON.parse(body)

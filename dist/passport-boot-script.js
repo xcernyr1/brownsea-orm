@@ -15,8 +15,6 @@ function configurePassport(app, accessToken, user, identity, credential, config)
     for (var s in config) {
         var c = config[s];
         c.session = c.session !== false;
-        if (s === 'scout')
-            c.strategy = Strategy;
         passportConfigurator.configureProvider(s, c);
         create_routes_1.createRoutes(app, c.options);
     }
