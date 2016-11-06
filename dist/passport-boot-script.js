@@ -1,9 +1,10 @@
 "use strict";
-var loopbackPassport = require('loopback-component-passport');
-var ensureLoggedIn = require('connect-ensure-login');
 var create_routes_1 = require('./create-routes');
+var loopbackPassport = require('loopback-component-passport');
+var PassportConfigurator = loopbackPassport.PassportConfigurator;
+var ensureLoggedIn = require('connect-ensure-login');
+var Strategy = require('./strategy').ScoutStrategy;
 function configurePassport(app, accessToken, user, identity, credential, config) {
-    var PassportConfigurator = loopbackPassport.PassportConfigurator;
     var passportConfigurator = new PassportConfigurator(app);
     passportConfigurator.init();
     passportConfigurator.setupModels({
@@ -14,9 +15,11 @@ function configurePassport(app, accessToken, user, identity, credential, config)
     for (var s in config) {
         var c = config[s];
         c.session = c.session !== false;
+        if (s === 'scout')
+            c.strategy = Strategy;
         passportConfigurator.configureProvider(s, c);
+        create_routes_1.createRoutes(app, c.options);
     }
-    create_routes_1.createRoutes(app);
 }
 exports.configurePassport = configurePassport;
 //# sourceMappingURL=passport-boot-script.js.map

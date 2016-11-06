@@ -1,10 +1,58 @@
 var util = require('util');
 var Strategy = require('passport-strategy');
+var OAuth2Strategy = require('passport-oauth2');
 function MockStrategy(options, verify) {
     this._verify = verify;
     Strategy.call(this);
 }
+function ScoutStrategy(options, verify) {
+    this.hostname = options.hostname;
+    this._verify = verify;
+    Strategy.call(this);
+}
 util.inherits(MockStrategy, Strategy);
+util.inherits(OAuth2Strategy, OAuth2Strategy);
+ScoutStrategy.prototype.userProfile = function (accessToken, done) {
+    var self = this;
+    this._oauth2.get(this.hostname + "/api/current-user", accessToken, function (err, body, other) {
+        if (err)
+            return done(err);
+        try {
+            var json = JSON.parse(body);
+            var id = json.data[0].uid;
+        }
+        catch (err) {
+            return done(err);
+        }
+        self._oauth2.get(this.hostname + "/api/users" + id, accessToken, function (err, body, other) {
+            if (err)
+                return done(err);
+            try {
+                var json = JSON.parse(body);
+                var id = json.data[0].uid;
+                var user = json.data[0];
+                var profile = {
+                    provider: 'scout',
+                    id: Number(user.uid),
+                    username: user.name,
+                    profileImage: user.profileImage,
+                    name: {
+                        givenName: user.firstName,
+                        lastName: user.lastName
+                    },
+                    country: user.location,
+                    organisation: user.organisation,
+                    emails: [{ value: user.email }],
+                    profileURL: user.self
+                };
+                return done(null, profile);
+            }
+            catch (err) {
+                return done(err);
+            }
+        });
+    });
+};
 MockStrategy.prototype.authenticate = function (req, options) {
     var self = this;
     debugger;
