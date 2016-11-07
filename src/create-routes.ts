@@ -13,7 +13,7 @@ export function createRoutes(app, options) {
         let _redirect = url.format({
             protocol: options.protocool,
             port: options.port,
-            hostname: options.hostmname,
+            hostname: options.hostname,
             query: {
                 created: token.created,
                 id: token.id,
