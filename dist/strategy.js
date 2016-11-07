@@ -44,7 +44,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
                         givenName: user.firstName,
                         lastName: user.lastName
                     },
-                    country: user.location || user.country,
+                    country: user.country,
                     organisation: user.organisation,
                     emails: [{ value: user.email }],
                     profileURL: user.self
