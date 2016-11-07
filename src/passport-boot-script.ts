@@ -2,7 +2,6 @@ import { createRoutes } from './create-routes';
 var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var ensureLoggedIn = require('connect-ensure-login');
-var Strategy = require('./strategy').ScoutStrategy
 export function configurePassport(app, accessToken, user, identity, credential, config) {
 
   var passportConfigurator = new PassportConfigurator(app);
@@ -15,6 +14,7 @@ export function configurePassport(app, accessToken, user, identity, credential, 
     userCredentialModel: credential
   });
   for (var s in config) {
+    debugger
     var c = config[s];
     c.session = c.session !== false;
     passportConfigurator.configureProvider(s, c);

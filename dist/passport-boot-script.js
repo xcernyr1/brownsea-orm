@@ -3,7 +3,6 @@ var create_routes_1 = require('./create-routes');
 var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var ensureLoggedIn = require('connect-ensure-login');
-var Strategy = require('./strategy').ScoutStrategy;
 function configurePassport(app, accessToken, user, identity, credential, config) {
     var passportConfigurator = new PassportConfigurator(app);
     passportConfigurator.init();

@@ -8,12 +8,12 @@ function MockStrategy(options, verify) {
 function ScoutStrategy(options, verify) {
     this._userProfile = options.userProfile;
     this._verify = verify;
-    Strategy.call(this, options, verify);
+    OAuth2Strategy.call(this, options, verify);
 }
 util.inherits(MockStrategy, Strategy);
 util.inherits(ScoutStrategy, OAuth2Strategy);
 ScoutStrategy.prototype.userProfile = function (accessToken, done) {
-    var self = this;
+    var _this = this;
     this._oauth2.get(this._userProfile + "/api/current-user", accessToken, function (err, body, other) {
         if (err)
             return done(err);
@@ -24,7 +24,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
         catch (err) {
             return done(err);
         }
-        self._oauth2.get(this._userProfile + "/api/users/" + id, accessToken, function (err, body, other) {
+        _this._oauth2.get(_this._userProfile + "/api/users/" + id, accessToken, function (err, body, other) {
             if (err)
                 return done(err);
             try {
@@ -79,8 +79,8 @@ MockStrategy.prototype.authenticate = function (req, options) {
     }, verified);
 };
 MockStrategy.prototype.userProfile = function (token, tokenSecret, params, done) {
-    debugger;
     done(null, { displayName: 'Paul Robinson', email: 'email@email.com' });
 };
-module.exports = MockStrategy;
+module.exports.MockStrategy = MockStrategy;
+module.exports.ScoutStrategy = ScoutStrategy;
 //# sourceMappingURL=strategy.js.map
