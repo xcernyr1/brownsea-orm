@@ -34,6 +34,8 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
                 var id = json.data[0].uid;
                 var user = json.data[0];
                 var profile = {
+                    _json: json.data[0],
+                    _raw: body,
                     provider: 'scout',
                     id: Number(user.uid),
                     username: user.name,
