@@ -14,7 +14,6 @@ export function configurePassport(app, accessToken, user, identity, credential, 
     userCredentialModel: credential
   });
   for (var s in config) {
-    debugger
     var c = config[s];
     c.session = c.session !== false;
     passportConfigurator.configureProvider(s, c);
