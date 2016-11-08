@@ -38,6 +38,7 @@
     "dotenv": "^2.0.0",
     "loopback-component-passport": "^2.3.0",
     "passport-drupal": "https://github.com/NextFaze/passport-drupal.git",
+    "passport-strategy": "^1.0.0",
     "querystring": "^0.2.0",
     "request": "^2.73.0",
     "typescript": "^2.0.6"
