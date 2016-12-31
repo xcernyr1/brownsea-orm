@@ -1,5 +1,5 @@
 const Browser = require('zombie');
-const browser = new Browser();
+const browser = new Browser({waitDuration: 60 * 1000});
 import {parse} from 'url';
 import {stringify} from 'querystring';
 /**

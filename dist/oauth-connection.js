@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const Browser = require('zombie');
-const browser = new Browser();
+const browser = new Browser({ waitDuration: 60 * 1000 });
 const url_1 = require('url');
 const errors_1 = require('./errors');
 class OauthConnection {
