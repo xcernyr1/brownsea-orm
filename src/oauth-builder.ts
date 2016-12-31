@@ -15,7 +15,7 @@ export const scoutsOauthBuilder = (OAuth: any, request: any, options: {
   secret: string,
   host: string
 }) => {
-  let oauth = new OAuth(
+  let oauth = OAuth(
       options.key, options.secret, options.host, AUTHORIZE, REQUEST_TOKEN);
   return new OauthConnection(
       oauth, request, options.host, options.username, options.password);
