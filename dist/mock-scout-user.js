@@ -1,15 +1,14 @@
 "use strict";
-var Chance = require('chance');
+const Chance = require('chance');
 var chance = new Chance();
-function MockUser(roles) {
-    if (roles === void 0) { roles = { "2": "authenticated user" }; }
-    var _a = { firstName: chance.first(), lastName: chance.last(), email: chance.email() }, firstName = _a.firstName, lastName = _a.lastName, email = _a.email;
+function MockUser(roles = { "2": "authenticated user" }) {
+    let { firstName, lastName, email } = { firstName: chance.first(), lastName: chance.last(), email: chance.email() };
     return JSON.stringify({
         "sessid": "09CxyC7w5YPi8LSbaRy-TxGn89Uaani27WgNVgMVm6A",
         "session_name": "SESS8aab09ea49f85a1307760629d6202c53",
         "user": {
             "uid": "448936",
-            "name": firstName + " " + lastName,
+            "name": `${firstName} ${lastName}`,
             "mail": email,
             "theme": "",
             "signature": "",

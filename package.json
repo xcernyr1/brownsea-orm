@@ -6,17 +6,20 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
-    "test": "npm run test:spec && npm run test:e2e",
+    "test": "mocha ./dist/**/*.{e2e,spec}.js",
+    "test:debug": "npm run build && mocha --debug ./dist/**/*.{e2e,spec}.js",
     "build:tsc": "npm run clean && tsc",
     "build": "npm run build:tsc",
     "reinstall": "npm cache clean && npm install",
     "test:spec": "mocha ./dist/**/*.spec.js",
     "test:e2e": "mocha ./dist/**/*.e2e.js",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "test:watch": "nodemon --exec \"npm run test:debug\" -w src -e ts,json"
   },
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.5.3",
+    "nodemon": "^1.11.0",
     "oauth": "^0.9.14"
   },
   "keywords": [
@@ -33,6 +36,7 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.46",
     "@types/request": "0.0.32",
+    "browser-request": "^0.3.3",
     "chance": "^1.0.4",
     "connect-ensure-login": "^0.1.1",
     "dotenv": "^2.0.0",
@@ -40,8 +44,11 @@
     "oauth": "^0.9.14",
     "passport-drupal": "https://github.com/NextFaze/passport-drupal.git",
     "passport-strategy": "^1.0.0",
+    "qs": "^6.3.0",
     "querystring": "^0.2.0",
     "request": "^2.73.0",
-    "typescript": "^2.0.6"
+    "typescript": "^2.0.6",
+    "urllib": "^2.19.0",
+    "zombie": "^5.0.5"
   }
 }

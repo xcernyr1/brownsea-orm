@@ -15,8 +15,7 @@ function ScoutStrategy(options, verify) {
 util.inherits(MockStrategy, Strategy);
 util.inherits(ScoutStrategy, OAuth2Strategy);
 ScoutStrategy.prototype.userProfile = function (accessToken, done) {
-    var _this = this;
-    this._oauth2.get("" + this._resource + this._whoamiURL, accessToken, function (err, body, other) {
+    this._oauth2.get(`${this._resource}${this._whoamiURL}`, accessToken, (err, body, other) => {
         if (err)
             return done(err);
         try {
@@ -26,7 +25,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
         catch (err) {
             return done(err);
         }
-        _this._oauth2.get("" + _this._resource + _this._profileURL + "/" + id, accessToken, function (err, body, other) {
+        this._oauth2.get(`${this._resource}${this._profileURL}/${id}`, accessToken, function (err, body, other) {
             if (err)
                 return done(err);
             try {
@@ -59,7 +58,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
 };
 MockStrategy.prototype.authenticate = function (req, options) {
     var self = this;
-    var a = self._verify.length;
+    let a = self._verify.length;
     function verified(err, user, info) {
         if (err) {
             return self.error(err);

@@ -1,5 +1,5 @@
 "use strict";
-var url = require('url');
+const url = require('url');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 function createRoutes(app, options) {
     app.get('/', function (req, res, next) {
@@ -8,9 +8,9 @@ function createRoutes(app, options) {
             url: req.url,
         });
     });
-    app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), function (req, res, next) {
-        var token = req.accessToken.toObject();
-        var _redirect = url.format({
+    app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), (req, res, next) => {
+        let token = req.accessToken.toObject();
+        let _redirect = url.format({
             protocol: options.protocool,
             port: options.port,
             hostname: options.hostname,

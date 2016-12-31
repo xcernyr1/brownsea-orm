@@ -1,8 +1,8 @@
 "use strict";
-var passport_boot_script_1 = require('./passport-boot-script');
-var create_oauth_routes_1 = require('./create-oauth-routes');
+const passport_boot_script_1 = require('./passport-boot-script');
+const create_oauth_routes_1 = require('./create-oauth-routes');
 function bootPassportMock(app, accessToken, user, identity, credential) {
-    var config = {
+    let config = {
         "scout": {
             "strategy": "DrupalStrategy",
             "module": "passport-drupal",

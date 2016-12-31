@@ -1,171 +1,142 @@
 "use strict";
-var errors_1 = require('./errors');
-var OauthConnection = (function () {
-    function OauthConnection(oauth, req, host, username, password) {
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments)).next());
+    });
+};
+const Browser = require('zombie');
+const browser = new Browser();
+const url_1 = require('url');
+const errors_1 = require('./errors');
+class OauthConnection {
+    constructor(oauth, req, host, username, password) {
         this.oauth = oauth;
         this.req = req;
         this.host = host;
         this.username = username;
         this.password = password;
+        this.defaults = {
+            headers: { 'User-Agent': 'request' },
+        };
     }
-    OauthConnection.prototype.connect = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.request()
-                .then(function (payload) { return (_this.authorise(payload)); })
-                .then(function (payload) { return (_this.access(payload)); })
-                .then(function (payload) {
-                _this.setTokenAndSecret(payload);
-                resolve({ connected: true });
-            })
-                .catch(function (err) {
-                reject(new Error('Failed to Connect' + err));
-            });
+    connect() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let request = yield this.request();
+            let authorise = yield this.authorise(request);
+            this.access_token = authorise.access_token;
+            this.refresh_token = authorise.refresh_token;
+            return { connected: true };
         });
-    };
-    Object.defineProperty(OauthConnection.prototype, "isAuthorised", {
-        get: function () {
-            return Boolean(this.access_token && this.access_secret);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    OauthConnection.prototype.get = function (url) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            if (!_this.isAuthorised)
-                console.warn('It appears that access_token || access_secret are not set');
-            _this.oauth.get(_this.host + url, _this.access_token, _this.access_secret, function (err, data, res) {
-                if (err)
-                    return reject(_this._errorHandler(err));
-                resolve({ data: JSON.parse(data), res: res });
-            });
+    }
+    get isAuthorised() {
+        return Boolean(this.access_token && this.refresh_token);
+    }
+    get(url, query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this._request('get', url, null, query);
         });
-    };
-    OauthConnection.prototype.post = function (url, body, post_content_type) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            if (!_this.isAuthorised)
-                console.warn('It appears that access_token || access_secret are not set');
-            _this.oauth.post(_this.host + url, _this.access_token, _this.access_secret, body, post_content_type, function (err, data, res) {
-                if (err)
-                    return reject(_this._errorHandler(err));
-                resolve({ data: JSON.parse(data), res: res });
-            });
+    }
+    getOne(url, query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this._request('get', url, null, query, false);
         });
-    };
-    OauthConnection.prototype.put = function (url, body, post_content_type) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            if (!_this.isAuthorised)
-                console.warn('It appears that access_token || access_secret are not set');
-            _this.oauth.put(_this.host + url, _this.access_token, _this.access_secret, body, post_content_type, function (err, data, res) {
-                if (err)
-                    return reject(_this._errorHandler(err));
-                resolve({ data: JSON.parse(data), res: res });
-            });
+    }
+    post(url, body = {}, query = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this._request('post', url, body, query);
         });
-    };
-    OauthConnection.prototype.delete = function (url) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            if (!_this.isAuthorised)
-                console.warn('It appears that access_token || access_secret are not set');
-            _this.oauth.delete(_this.host + url, _this.access_token, _this.access_secret, function (err, data, res) {
-                if (err)
-                    return reject(_this._errorHandler(err));
-                resolve({ data: JSON.parse(data), res: res });
-            });
+    }
+    patch(url, body = {}, query = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this._request('patch', url, body, query);
         });
-    };
-    OauthConnection.prototype.authorise = function (payload) {
-        var _this = this;
-        var jar = this.req.jar();
-        var request = this.req.defaults({ jar: jar });
-        return new Promise(function (resolve, reject) {
-            request.post(_this.host + ("modal_forms/ajax/login?destination=/oauth/authorize&oauth_token=" + payload.token), { form: {
-                    'form_id': 'user_login',
-                    'name': _this.username,
-                    'op': 'Log in',
-                    'pass': _this.password,
-                } }, function (err, res, body) {
-                if (err)
-                    return reject(new errors_1.CustomError({
-                        status: err.statusCode,
-                        message: 'Custom Login Failed'
-                    }));
-                request.post(_this.host + "oauth/authorize?oauth_token=" + payload.token, { form: {
-                        "form_id": "oauth_common_form_authorize_override",
-                        "levels[default]": 1,
-                        "op": "Grant access"
-                    } }, function (err, res2, body) {
+    }
+    _request(method, url, body = {}, query = {}, many = true) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let options = Object.assign(this.defaults, {
+                method,
+                form: body,
+                url: this.host + url,
+                qs: Object.assign(query || {}, { access_token: this.access_token })
+            });
+            return new Promise((resolve, reject) => {
+                if (!this.isAuthorised)
+                    console.warn('It appears that access_token || refresh_token are not set');
+                this.req(options, (err, res, data) => {
                     if (err)
-                        return reject(new errors_1.CustomError({
-                            status: err.statusCode,
-                            message: 'Custom Authorize Token Failed'
-                        }));
-                    resolve(payload);
+                        return reject(this._errorHandler(err));
+                    if (res.statusCode >= 401)
+                        return reject(new Error('Permission Denied'));
+                    resolve({ data: this.bodyMapper(JSON.parse(data), many), res });
                 });
             });
         });
-    };
-    OauthConnection.prototype.request = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.oauth.getOAuthRequestToken(function (err, token, secret) {
-                if (err)
-                    return reject(new errors_1.CustomError({
-                        status: err.statusCode,
-                        message: 'Getting OAuth Request Token Failed'
-                    }));
-                resolve({ token: token, secret: secret });
+    }
+    authorise(payload = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => {
+                this.oauth.getOAuthAccessToken(payload.code, {
+                    grant_type: 'authorization_code',
+                    redirect_uri: 'https://httpbin.org/get'
+                }, (err, access_token, refresh_token) => {
+                    if (err)
+                        reject(new errors_1.CustomError({
+                            status: err.statusCode,
+                            message: 'Getting OAuth Request Token Failed'
+                        }));
+                    resolve({ access_token, refresh_token });
+                });
             });
         });
-    };
-    OauthConnection.prototype.access = function (payload) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.oauth.getOAuthAccessToken(payload.token, payload.secret, function (err, access_token, access_secret) {
-                if (err) {
-                    _this._customLoginError(payload);
-                    reject(new errors_1.CustomError({
-                        status: err.statusCode,
-                        message: 'Getting OAuth Access Token Failed'
-                    }));
-                }
-                resolve({ access_token: access_token, access_secret: access_secret });
+    }
+    request() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = this.oauth.getAuthorizeUrl({
+                client_secret: this.oauth._clientSecret,
+                response_type: 'code',
+                state: 'random1234',
+                scope: 'api',
+                redirect_uri: 'https://httpbin.org/get'
+            });
+            return new Promise((resolve, reject) => {
+                browser.visit(url, () => {
+                    browser.fill('name', this.username)
+                        .fill('pass', this.password)
+                        .pressButton('op', (err, res, body) => {
+                        let query = url_1.parse(browser.location.href, true);
+                        browser.deleteCookies();
+                        return err ? reject(err) : resolve(query.query);
+                    });
+                });
             });
         });
-    };
-    OauthConnection.prototype._customLoginError = function (payload) {
-        console.log("Navigate to this and authorise:\n" + process.env.HOST + "oauth/authorize?oauth_token=" + payload.token);
-    };
-    OauthConnection.prototype._errorHandler = function (err) {
+    }
+    _customLoginError(payload) {
+        console.log(`Navigate to this and authorise:\n${process.env.HOST}oauth/authorize?oauth_token=${payload.token}`);
+    }
+    bodyMapper(payload, many) {
+        if (!payload || !payload.data)
+            return many ? [] : {};
+        return many ? payload.data : payload.data[0];
+    }
+    _errorHandler(err) {
         switch (err.statusCode) {
             case 404:
-                return new errors_1.Error404({
-                    body: err,
-                    lib: 'Scouts API'
-                });
+                return new errors_1.Error404({ body: err, lib: 'Scouts API' });
             case 406:
-                return new errors_1.Error400({
-                    body: err,
-                    lib: 'Scouts API'
-                });
+                return new errors_1.Error400({ body: err, lib: 'Scouts API' });
             default:
-                return new errors_1.Error500({
-                    body: err,
-                    status: err.statusCode,
-                    lib: 'Scouts API'
-                });
+                return new errors_1.Error500({ body: err, status: err.statusCode, lib: 'Scouts API' });
         }
-    };
-    OauthConnection.prototype.setTokenAndSecret = function (payload) {
-        var access_token = payload.access_token, access_secret = payload.access_secret;
+    }
+    setTokenAndSecret(payload) {
+        const { access_token, refresh_token } = payload;
         this.access_token = access_token;
-        this.access_secret = access_secret;
-    };
-    return OauthConnection;
-}());
+        this.refresh_token = refresh_token;
+    }
+}
 exports.OauthConnection = OauthConnection;
 //# sourceMappingURL=oauth-connection.js.map

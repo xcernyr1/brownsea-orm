@@ -1,5 +1,4 @@
 "use strict";
-var _this = this;
 exports.mockRequest = {
     post: function (url, opts, cb) {
         cb(null, null, null);
@@ -10,8 +9,8 @@ exports.mockRequest = {
     defaults: function () {
         return this;
     },
-    jar: function () {
-        return _this;
+    jar: () => {
+        return this;
     }
 };
 //# sourceMappingURL=mock-request.js.map
