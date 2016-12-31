@@ -35,4 +35,4 @@ class Term extends base_model_1.BaseModel {
 Term.modelName = 'term';
 Term.Model = Term;
 exports.Term = Term;
-//# sourceMappingURL=topic-model.js.map
+//# sourceMappingURL=term-model.js.map

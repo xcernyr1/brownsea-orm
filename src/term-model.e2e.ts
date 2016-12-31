@@ -7,7 +7,7 @@ import {MockOauth} from './mock-oauth';
 import {mockRequest} from './mock-request';
 import {scoutsOauthBuilder} from './oauth-builder';
 import {OauthConnection} from './oauth-connection';
-import {Term} from './topic-model';
+import {Term} from './term-model';
 
 dotenv.config({silent: true});
 var OAuth = require('oauth').OAuth2;

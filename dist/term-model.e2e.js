@@ -3,7 +3,7 @@ const chai_1 = require('chai');
 const dotenv = require('dotenv');
 const request = require('request');
 const oauth_builder_1 = require('./oauth-builder');
-const topic_model_1 = require('./topic-model');
+const term_model_1 = require('./term-model');
 dotenv.config({ silent: true });
 var OAuth = require('oauth').OAuth2;
 describe('Topics model should return topics', function () {
@@ -21,21 +21,21 @@ describe('Topics model should return topics', function () {
         });
         connection.connect()
             .then(() => {
-            topic_model_1.Term.setConnection(connection);
+            term_model_1.Term.setConnection(connection);
             done();
         })
             .catch(done);
     });
     it('should get a topic', done => {
-        topic_model_1.Term.findById('102')
+        term_model_1.Term.findById('102')
             .then(_topic => {
-            chai_1.expect(_topic).to.be.instanceOf(topic_model_1.Term);
+            chai_1.expect(_topic).to.be.instanceOf(term_model_1.Term);
             done();
         })
             .catch(done);
     });
     it('should get many topics', done => {
-        topic_model_1.Term.find()
+        term_model_1.Term.find()
             .then(_terms => {
             chai_1.assert.lengthOf(_terms, 50);
             done();
@@ -43,7 +43,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many tags', done => {
-        topic_model_1.Term.tags()
+        term_model_1.Term.tags()
             .then(_tags => {
             chai_1.expect(_tags.length > 1).to.be.true;
             done();
@@ -51,7 +51,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many topics', done => {
-        topic_model_1.Term.categories()
+        term_model_1.Term.categories()
             .then(_cats => {
             chai_1.expect(_cats.length > 1).to.be.true;
             done();
@@ -59,7 +59,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many question_categories', done => {
-        topic_model_1.Term.question_categories()
+        term_model_1.Term.question_categories()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -67,7 +67,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many organization', done => {
-        topic_model_1.Term.organization()
+        term_model_1.Term.organization()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -75,7 +75,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many topics_news', done => {
-        topic_model_1.Term.topics_news()
+        term_model_1.Term.topics_news()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -83,7 +83,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many topics_events', done => {
-        topic_model_1.Term.topics_events()
+        term_model_1.Term.topics_events()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -91,7 +91,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many countries', done => {
-        topic_model_1.Term.countries()
+        term_model_1.Term.countries()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -99,7 +99,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many languages', done => {
-        topic_model_1.Term.languages()
+        term_model_1.Term.languages()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -107,7 +107,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many topics_tutorials', done => {
-        topic_model_1.Term.topics_tutorials()
+        term_model_1.Term.topics_tutorials()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -115,7 +115,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many associations', done => {
-        topic_model_1.Term.scouting_interests()
+        term_model_1.Term.scouting_interests()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -123,7 +123,7 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
     it('should get many scouting_interests', done => {
-        topic_model_1.Term.associations()
+        term_model_1.Term.associations()
             .then(_terms => {
             chai_1.expect(_terms.length > 1).to.be.true;
             done();
@@ -131,4 +131,4 @@ describe('Topics model should return topics', function () {
             .catch(done);
     });
 });
-//# sourceMappingURL=topic-model.e2e.js.map
+//# sourceMappingURL=term-model.e2e.js.map
