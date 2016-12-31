@@ -3,4 +3,5 @@ typings/
 .vscode/
 
 .env
-.test.hiddem
+.test.hidden
+*.log
