@@ -48,7 +48,7 @@ class BaseModel {
             if (result.count < this.MAX_INSTANCES_RETURNED)
                 return result;
             let cache = [...result.models];
-            let rounded = this.floor(result.count);
+            let rounded = this.ceil(result.count);
             let queries = [];
             for (let page = 2; page <= rounded; page++) {
                 let _query = Object.assign({}, query, { page: { number: page } });
@@ -59,8 +59,8 @@ class BaseModel {
             return new BaseModels(reduced, result.count);
         });
     }
-    static floor(count) {
-        let rounded = Math.floor(count / this.MAX_INSTANCES_RETURNED);
+    static ceil(count) {
+        let rounded = Math.ceil(count / this.MAX_INSTANCES_RETURNED);
         return rounded;
     }
 }

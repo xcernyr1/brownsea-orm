@@ -17,5 +17,5 @@ export declare class BaseModel {
     constructor(instance: any);
     update(body: any): Promise<any>;
     static findAll(query: ScoutQuery): Promise<BaseModels>;
-    private static floor(count);
+    private static ceil(count);
 }

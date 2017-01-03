@@ -38,7 +38,7 @@ export class BaseModel {
     let result = await this.find(query);
     if (result.count < this.MAX_INSTANCES_RETURNED) return result;
     let cache = [...result.models];
-    let rounded = this.floor(result.count);
+    let rounded = this.ceil(result.count);
     let queries = [];
     for (let page = 2; page <= rounded; page++) {
       let _query = Object.assign({}, query, {page: {number: page}});
@@ -49,8 +49,8 @@ export class BaseModel {
         results.map(a => a.models).reduce((a, b) => a.concat(b), cache);
     return new BaseModels(reduced, result.count);
   }
-  private static floor(count: number) {
-    let rounded = Math.floor(count / this.MAX_INSTANCES_RETURNED);
+  private static ceil(count: number) {
+    let rounded = Math.ceil(count / this.MAX_INSTANCES_RETURNED);
     return rounded;
   }
 }
