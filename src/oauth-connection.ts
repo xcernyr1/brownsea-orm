@@ -86,8 +86,10 @@ export class OauthConnection {
             'It appears that access_token || refresh_token are not set');
       this.req(options, (err, res, data) => {
         if (err) return reject(this._errorHandler(err));
-        if (res.statusCode >= 401) return reject(new Error('Permission Denied'))
-          resolve({data: this.bodyMapper(JSON.parse(data), many), res});
+        if (res.statusCode >= 401)
+          return reject(new Error('Permission Denied'));
+        resolve(
+            Object.assign({}, this.bodyMapper(JSON.parse(data), many), {res}));
       });
     });
   }
@@ -131,8 +133,10 @@ export class OauthConnection {
         `Navigate to this and authorise:\n${process.env.HOST}oauth/authorize?oauth_token=${payload.token}`);
   }
   private bodyMapper(payload, many) {
-    if (!payload || !payload.data) return many ? [] : {};
-    return many ? payload.data : payload.data[0];
+    if (!payload || !payload.data)
+      return many ? {data: [], count: 0} : {data: null, count: 0};
+    return many ? {data: payload.data, count: payload.count} :
+                  {data: payload.data[0], count: 1};
   }
   private _errorHandler(err) {
     switch (err.statusCode) {

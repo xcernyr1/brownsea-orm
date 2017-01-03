@@ -45,7 +45,7 @@ describe('Topics model should return topics', function () {
     it('should get many tags', done => {
         term_model_1.Term.tags()
             .then(_tags => {
-            chai_1.expect(_tags.length > 1).to.be.true;
+            chai_1.expect(_tags.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -53,7 +53,7 @@ describe('Topics model should return topics', function () {
     it('should get many topics', done => {
         term_model_1.Term.categories()
             .then(_cats => {
-            chai_1.expect(_cats.length > 1).to.be.true;
+            chai_1.expect(_cats.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -61,15 +61,16 @@ describe('Topics model should return topics', function () {
     it('should get many question_categories', done => {
         term_model_1.Term.question_categories()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
     it('should get many organization', done => {
-        term_model_1.Term.organization()
+        term_model_1.Term.organization({}, true)
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            debugger;
+            chai_1.assert.lengthOf(_terms.models, _terms.count);
             done();
         })
             .catch(done);
@@ -77,7 +78,7 @@ describe('Topics model should return topics', function () {
     it('should get many topics_news', done => {
         term_model_1.Term.topics_news()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -85,7 +86,7 @@ describe('Topics model should return topics', function () {
     it('should get many topics_events', done => {
         term_model_1.Term.topics_events()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -93,7 +94,7 @@ describe('Topics model should return topics', function () {
     it('should get many countries', done => {
         term_model_1.Term.countries()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -101,7 +102,7 @@ describe('Topics model should return topics', function () {
     it('should get many languages', done => {
         term_model_1.Term.languages()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -109,7 +110,7 @@ describe('Topics model should return topics', function () {
     it('should get many topics_tutorials', done => {
         term_model_1.Term.topics_tutorials()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -117,7 +118,7 @@ describe('Topics model should return topics', function () {
     it('should get many associations', done => {
         term_model_1.Term.scouting_interests()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
@@ -125,7 +126,7 @@ describe('Topics model should return topics', function () {
     it('should get many scouting_interests', done => {
         term_model_1.Term.associations()
             .then(_terms => {
-            chai_1.expect(_terms.length > 1).to.be.true;
+            chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);

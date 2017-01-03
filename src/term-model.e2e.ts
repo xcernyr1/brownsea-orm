@@ -52,7 +52,7 @@ describe('Topics model should return topics', function() {
   it('should get many tags', done => {
     Term.tags()
         .then(_tags => {
-          expect(_tags.length > 1).to.be.true;
+          expect(_tags.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -60,7 +60,7 @@ describe('Topics model should return topics', function() {
   it('should get many topics', done => {
     Term.categories()
         .then(_cats => {
-          expect(_cats.length > 1).to.be.true;
+          expect(_cats.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -69,15 +69,16 @@ describe('Topics model should return topics', function() {
   it('should get many question_categories', done => {
     Term.question_categories()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
   });
   it('should get many organization', done => {
-    Term.organization()
+    Term.organization({}, true)
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          debugger
+          assert.lengthOf(_terms.models, _terms.count);
           done();
         })
         .catch(done);
@@ -85,7 +86,7 @@ describe('Topics model should return topics', function() {
   it('should get many topics_news', done => {
     Term.topics_news()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -93,7 +94,7 @@ describe('Topics model should return topics', function() {
   it('should get many topics_events', done => {
     Term.topics_events()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -101,7 +102,7 @@ describe('Topics model should return topics', function() {
   it('should get many countries', done => {
     Term.countries()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -109,7 +110,7 @@ describe('Topics model should return topics', function() {
   it('should get many languages', done => {
     Term.languages()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -117,7 +118,7 @@ describe('Topics model should return topics', function() {
   it('should get many topics_tutorials', done => {
     Term.topics_tutorials()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -125,7 +126,7 @@ describe('Topics model should return topics', function() {
   it('should get many associations', done => {
     Term.scouting_interests()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);
@@ -133,7 +134,7 @@ describe('Topics model should return topics', function() {
   it('should get many scouting_interests', done => {
     Term.associations()
         .then(_terms => {
-          expect(_terms.length > 1).to.be.true;
+          expect(_terms.models.length > 1).to.be.true;
           done();
         })
         .catch(done);

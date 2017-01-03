@@ -37,7 +37,7 @@ describe('Connector For Scouts Oauth Implementation', function () {
     it('should get many user', done => {
         user_model_1.User.find()
             .then(user => {
-            chai_1.assert.lengthOf(user, 50);
+            chai_1.assert.lengthOf(user.models, 50);
             done();
         })
             .catch(done);
