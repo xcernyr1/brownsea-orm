@@ -1,4 +1,3 @@
-
 import {scoutsOauthBuilder} from './oauth-builder';
 
 export * from './oauth-connection';
@@ -9,3 +8,4 @@ export * from './term-model';
 export * from './oauth-builder';
 export * from './passport-boot-script';
 export * from './passport-boot-mock';
+export * from './base-model'
