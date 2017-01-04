@@ -10,4 +10,5 @@ __export(require('./term-model'));
 __export(require('./oauth-builder'));
 __export(require('./passport-boot-script'));
 __export(require('./passport-boot-mock'));
+__export(require('./base-model'));
 //# sourceMappingURL=index.js.map
