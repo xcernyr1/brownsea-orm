@@ -1,12 +1,12 @@
 "use strict";
-const chai_1 = require('chai');
-const dotenv = require('dotenv');
-const oauth_builder_1 = require('./oauth-builder');
+var chai_1 = require("chai");
+var dotenv = require("dotenv");
+var oauth_builder_1 = require("./oauth-builder");
 var OAuth = require('oauth').OAuth2;
 var request = require('urllib');
 dotenv.config({ silent: true });
 describe('Scouts Staging Server Test', function () {
-    let connection;
+    var connection;
     before(function (done) {
         this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
@@ -16,9 +16,9 @@ describe('Scouts Staging Server Test', function () {
             password: process.env.PASS,
             host: process.env.HOST
         });
-        connection.connect().then(() => { done(); }).catch(done);
+        connection.connect().then(function () { done(); }).catch(done);
     });
-    it('should connect', (done) => {
+    it('should connect', function (done) {
         chai_1.expect(connection.isAuthorised).to.be.true;
         done();
     });

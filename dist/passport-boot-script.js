@@ -1,5 +1,5 @@
 "use strict";
-const create_routes_1 = require('./create-routes');
+var create_routes_1 = require("./create-routes");
 var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var ensureLoggedIn = require('connect-ensure-login');

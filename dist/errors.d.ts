@@ -1,4 +1,3 @@
-/// <reference types="node" />
 export interface ErrorOptions {
     lib?: string;
     message?: string;

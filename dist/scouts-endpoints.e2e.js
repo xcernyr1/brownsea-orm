@@ -1,13 +1,13 @@
 "use strict";
-const chai_1 = require('chai');
-const dotenv = require('dotenv');
-const request = require('request');
-const util_1 = require('util');
-const oauth_builder_1 = require('./oauth-builder');
+var chai_1 = require("chai");
+var dotenv = require("dotenv");
+var request = require("request");
+var util_1 = require("util");
+var oauth_builder_1 = require("./oauth-builder");
 var OAuth = require('oauth').OAuth2;
 dotenv.config({ silent: true });
 describe('Scouts Staging Server Test', function () {
-    let connection;
+    var connection;
     before(function (done) {
         this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
@@ -17,13 +17,13 @@ describe('Scouts Staging Server Test', function () {
             password: process.env.PASS,
             host: process.env.HOST
         });
-        connection.connect().then(() => { done(); }).catch(done);
+        connection.connect().then(function () { done(); }).catch(done);
     });
-    it('should connect', done => {
+    it('should connect', function (done) {
         chai_1.expect(connection.isAuthorised).to.be.true;
         done();
     });
-    it('User: simple registration POST /user-registration', done => {
+    it('User: simple registration POST /user-registration', function (done) {
         connection
             .post('/api/user-registration', {
             name: 'My Name',
@@ -33,22 +33,22 @@ describe('Scouts Staging Server Test', function () {
             last_name: 'De La Mancha',
             country: 'Spain'
         })
-            .then(payload => {
+            .then(function (payload) {
             chai_1.expect(payload.data).to.not.be.empty;
             done();
         })
             .catch(done);
     });
-    it('User: test get current user relevant to access token', done => {
+    it('User: test get current user relevant to access token', function (done) {
         connection.get('/api/current-user')
-            .then(payload => {
+            .then(function (payload) {
             chai_1.expect(payload.data).to.not.be.empty;
             done();
         })
             .catch(done);
     });
-    describe('PAGINATION', () => {
-        let userTests = [{
+    describe('PAGINATION', function () {
+        var userTests = [{
                 endpoints: ['/api/user', '/api/term'],
                 description: 'to ensure that pagination is working',
                 tests: [
@@ -58,13 +58,13 @@ describe('Scouts Staging Server Test', function () {
                 ]
             }
         ];
-        userTests.forEach((test) => {
-            test.endpoints.forEach(endpoint => {
-                describe(`testing endpoint ${endpoint} ${test.description}`, () => {
-                    test.tests.forEach((_test) => {
-                        it(`tests that page[size] ${_test.payload.query.page.size} and page[number] ${_test.payload.query.page.number}`, (done) => {
+        userTests.forEach(function (test) {
+            test.endpoints.forEach(function (endpoint) {
+                describe("testing endpoint " + endpoint + " " + test.description, function () {
+                    test.tests.forEach(function (_test) {
+                        it("tests that page[size] " + _test.payload.query.page.size + " and page[number] " + _test.payload.query.page.number, function (done) {
                             connection.get(endpoint, _test.payload.query)
-                                .then(payload => {
+                                .then(function (payload) {
                                 chai_1.expect(payload.data).to.not.be.empty;
                                 if (util_1.isNumber(_test.result.length))
                                     chai_1.assert.lengthOf(payload.data, _test.result.length);
@@ -77,8 +77,8 @@ describe('Scouts Staging Server Test', function () {
             });
         });
     });
-    describe('FILTER', () => {
-        let userTests = [
+    describe('FILTER', function () {
+        var userTests = [
             {
                 endpoints: ['/api/user'],
                 description: 'to ensure that filter is working',
@@ -125,13 +125,13 @@ describe('Scouts Staging Server Test', function () {
                 ]
             }
         ];
-        userTests.forEach((test) => {
-            test.endpoints.forEach(endpoint => {
-                describe(`testing endpoint ${endpoint} ${test.description}`, () => {
-                    test.tests.forEach((_test) => {
-                        it(`tests that filter[${Object.keys(_test.payload.query.filter)[0]}] works `, (done) => {
+        userTests.forEach(function (test) {
+            test.endpoints.forEach(function (endpoint) {
+                describe("testing endpoint " + endpoint + " " + test.description, function () {
+                    test.tests.forEach(function (_test) {
+                        it("tests that filter[" + Object.keys(_test.payload.query.filter)[0] + "] works ", function (done) {
                             connection.get(endpoint, _test.payload.query)
-                                .then(payload => {
+                                .then(function (payload) {
                                 chai_1.expect(payload.data).to.not.be.empty;
                                 if (util_1.isNumber(_test.result.length))
                                     chai_1.assert.lengthOf(payload.data, _test.result.length);

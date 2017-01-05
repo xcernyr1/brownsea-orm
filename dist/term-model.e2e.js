@@ -1,15 +1,15 @@
 "use strict";
-const chai_1 = require('chai');
-const dotenv = require('dotenv');
-const request = require('request');
-const oauth_builder_1 = require('./oauth-builder');
-const term_model_1 = require('./term-model');
+var chai_1 = require("chai");
+var dotenv = require("dotenv");
+var request = require("request");
+var oauth_builder_1 = require("./oauth-builder");
+var term_model_1 = require("./term-model");
 dotenv.config({ silent: true });
 var OAuth = require('oauth').OAuth2;
 describe('Topics model should return topics', function () {
     this.timeout(30000);
-    let connection;
-    let topic;
+    var connection;
+    var topic;
     before(function (done) {
         this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
@@ -20,112 +20,112 @@ describe('Topics model should return topics', function () {
             host: process.env.HOST
         });
         connection.connect()
-            .then(() => {
+            .then(function () {
             term_model_1.Term.setConnection(connection);
             done();
         })
             .catch(done);
     });
-    it('should get a topic', done => {
+    it('should get a topic', function (done) {
         term_model_1.Term.findById('102')
-            .then(_topic => {
+            .then(function (_topic) {
             chai_1.expect(_topic).to.be.instanceOf(term_model_1.Term);
             done();
         })
             .catch(done);
     });
-    it('should get many topics', done => {
+    it('should get many topics', function (done) {
         term_model_1.Term.find()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.assert.lengthOf(_terms, 50);
             done();
         })
             .catch(done);
     });
-    it('should get many tags', done => {
+    it('should get many tags', function (done) {
         term_model_1.Term.tags()
-            .then(_tags => {
+            .then(function (_tags) {
             chai_1.expect(_tags.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many topics', done => {
+    it('should get many topics', function (done) {
         term_model_1.Term.categories()
-            .then(_cats => {
+            .then(function (_cats) {
             chai_1.expect(_cats.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many question_categories', done => {
+    it('should get many question_categories', function (done) {
         term_model_1.Term.question_categories()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many organization', done => {
+    it('should get many organization', function (done) {
         term_model_1.Term.organization({}, true)
-            .then(_terms => {
+            .then(function (_terms) {
             debugger;
             chai_1.assert.lengthOf(_terms.models, _terms.count);
             done();
         })
             .catch(done);
     });
-    it('should get many topics_news', done => {
+    it('should get many topics_news', function (done) {
         term_model_1.Term.topics_news()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many topics_events', done => {
+    it('should get many topics_events', function (done) {
         term_model_1.Term.topics_events()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many countries', done => {
+    it('should get many countries', function (done) {
         term_model_1.Term.countries()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many languages', done => {
+    it('should get many languages', function (done) {
         term_model_1.Term.languages()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many topics_tutorials', done => {
+    it('should get many topics_tutorials', function (done) {
         term_model_1.Term.topics_tutorials()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many associations', done => {
+    it('should get many associations', function (done) {
         term_model_1.Term.scouting_interests()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })
             .catch(done);
     });
-    it('should get many scouting_interests', done => {
+    it('should get many scouting_interests', function (done) {
         term_model_1.Term.associations()
-            .then(_terms => {
+            .then(function (_terms) {
             chai_1.expect(_terms.models.length > 1).to.be.true;
             done();
         })

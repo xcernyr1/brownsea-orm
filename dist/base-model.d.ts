@@ -12,10 +12,10 @@ export declare class BaseModel {
     static modelName: any;
     static setConnection(connection: OauthConnection): void;
     static findById(id: string, query?: ScoutQuery): Promise<any>;
-    static find(query?: ScoutQuery): Promise<BaseModels>;
+    static find(query?: ScoutQuery): Promise<any>;
     modelName: string;
     constructor(instance: any);
     update(body: any): Promise<any>;
-    static findAll(query: ScoutQuery): Promise<BaseModels>;
+    static findAll(query: ScoutQuery): Promise<any>;
     private static ceil(count);
 }
