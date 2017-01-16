@@ -31,7 +31,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
                 return done(err);
             try {
                 var json = JSON.parse(body);
-                var id = json.data[0].uid;
+                var id = json.data[0].uid + '';
                 var user = json.data[0];
                 var profile = {
                     _json: json.data[0],
@@ -40,10 +40,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
                     id: Number(user.uid),
                     username: user.name,
                     profileImage: user.profileImage,
-                    name: {
-                        givenName: user.firstName,
-                        lastName: user.lastName
-                    },
+                    name: { givenName: user.firstName, lastName: user.lastName },
                     country: user.country,
                     organisation: user.organisation,
                     emails: [{ value: user.email }],
@@ -76,10 +73,7 @@ MockStrategy.prototype.authenticate = function (req, options) {
         displayName: 'Paul Robinson',
         emails: [{ value: 'email@email.com' }],
         profileURL: 'user.json',
-        name: {
-            familyName: 'Robinson',
-            givenName: 'Paul'
-        }
+        name: { familyName: 'Robinson', givenName: 'Paul' }
     }, verified);
 };
 MockStrategy.prototype.userProfile = function (token, tokenSecret, params, done) {
