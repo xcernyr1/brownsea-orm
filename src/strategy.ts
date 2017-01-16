@@ -33,13 +33,13 @@ ScoutStrategy.prototype.userProfile = function(accessToken, done) {
               if (err) return done(err);
               try {
                 var json = JSON.parse(body);
-                var id = json.data[0].uid + '';
+                var id = json.data[0].id + '';
                 var user = json.data[0];
                 var profile = {
                   _json: json.data[0],
                   _raw: body,
                   provider: 'scout',
-                  id: Number(user.uid),
+                  id: id,
                   username: user.name,
                   profileImage: user.profileImage,
                   name: {givenName: user.firstName, lastName: user.lastName},
