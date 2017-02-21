@@ -47,6 +47,25 @@ describe('Scouts Staging Server Test', function () {
         })
             .catch(done);
     });
+    describe('Create Project', function () {
+        this.timeout(20000);
+        it.only('should get a great', function () {
+            return connection.post('/api/project', {
+                "title": "Year end Planning 2017",
+                "description": "How to plan this year.",
+                "pictures": [1148796, 1148791],
+                "language": "en",
+                "from_date": "2017-01-20",
+                "to_date": "2017-02-02",
+                "categories": "Dialogue, Health",
+                "service_hours": 24,
+                "participants": 1000
+            }).then(function (result) {
+                console.log(JSON.stringify(result, null, 2));
+                return result;
+            });
+        });
+    });
     describe('PAGINATION', function () {
         var userTests = [{
                 endpoints: ['/api/user', '/api/term'],

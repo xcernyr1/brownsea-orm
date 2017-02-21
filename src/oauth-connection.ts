@@ -39,10 +39,16 @@ export class OauthConnection {
       public oauth: any, public req: any, public host, public username?: string,
       public password?: string) {}
   async connect() {
-    let request = await this.request();
-    let authorise = await this.authorise(request);
-    this.access_token = authorise.access_token;
-    this.refresh_token = authorise.refresh_token
+    try {
+      let request = await this.request();
+      let authorise = await this.authorise(request);
+      this.access_token = authorise.access_token;
+      this.refresh_token = authorise.refresh_token
+      return {connected: true};
+
+    } catch (error) {
+      return {connected: false};
+    }
     //       .then(payload => (this.authorise(payload)))
     //       .then(payload => (this.access(payload)))
     //       .then((payload: any) => {
@@ -51,7 +57,6 @@ export class OauthConnection {
     //       })
     //       .catch(err => { reject(new Error('Failed to Connect' + err)); });
     // });
-    return {connected: true};
   }
   get isAuthorised() {
     return Boolean(this.access_token && this.refresh_token);
@@ -85,6 +90,7 @@ export class OauthConnection {
         console.warn(
             'It appears that access_token || refresh_token are not set');
       this.req(options, (err, res, data) => {
+        console.log(err);
         if (err) return reject(this._errorHandler(err));
         if (res.statusCode >= 401)
           return reject(new Error('Permission Denied'));
@@ -118,19 +124,22 @@ export class OauthConnection {
       scope: 'api',
       redirect_uri: 'https://httpbin.org/get'
     });
-    return new Promise((resolve, reject) => {browser.visit(url, () => {
-                         browser.fill('name', this.username)
-                             .fill('pass', this.password)
-                             .pressButton('op', (err, res, body) => {
-                               let query = parse(browser.location.href, true);
-                               browser.deleteCookies();
-                               return err ? reject(err) : resolve(query.query);
-                             });
-                       })})
+    return new Promise((resolve, reject) => {
+      browser.visit(url, (err) => {
+        if (err) return reject(err);
+        browser.fill('name', this.username)
+            .fill('pass', this.password)
+            .pressButton('op', (err, res, body) => {
+              let query = parse(browser.location.href, true);
+              browser.deleteCookies();
+              return err ? reject(err) : resolve(query.query);
+            });
+      });
+    });
   }
   private _customLoginError(payload: {token: string, secret: string}) {
-    console.log(
-        `Navigate to this and authorise:\n${process.env.HOST}oauth/authorize?oauth_token=${payload.token}`);
+    console.log(`Navigate to this and authorise:\n${process.env
+                    .HOST}oauth/authorize?oauth_token=${payload.token}`);
   }
   private bodyMapper(payload, many) {
     if (!payload || !payload.data)

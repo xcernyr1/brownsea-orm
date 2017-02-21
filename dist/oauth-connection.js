@@ -51,10 +51,12 @@ var OauthConnection = (function () {
     }
     OauthConnection.prototype.connect = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var request, authorise;
+            var request, authorise, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.request()];
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.request()];
                     case 1:
                         request = _a.sent();
                         return [4 /*yield*/, this.authorise(request)];
@@ -63,6 +65,10 @@ var OauthConnection = (function () {
                         this.access_token = authorise.access_token;
                         this.refresh_token = authorise.refresh_token;
                         return [2 /*return*/, { connected: true }];
+                    case 3:
+                        error_1 = _a.sent();
+                        return [2 /*return*/, { connected: false }];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -124,6 +130,7 @@ var OauthConnection = (function () {
                         if (!_this.isAuthorised)
                             console.warn('It appears that access_token || refresh_token are not set');
                         _this.req(options, function (err, res, data) {
+                            console.log(err);
                             if (err)
                                 return reject(_this._errorHandler(err));
                             if (res.statusCode >= 401)
@@ -168,7 +175,9 @@ var OauthConnection = (function () {
                     redirect_uri: 'https://httpbin.org/get'
                 });
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        browser.visit(url, function () {
+                        browser.visit(url, function (err) {
+                            if (err)
+                                return reject(err);
                             browser.fill('name', _this.username)
                                 .fill('pass', _this.password)
                                 .pressButton('op', function (err, res, body) {
@@ -182,7 +191,8 @@ var OauthConnection = (function () {
         });
     };
     OauthConnection.prototype._customLoginError = function (payload) {
-        console.log("Navigate to this and authorise:\n" + process.env.HOST + "oauth/authorize?oauth_token=" + payload.token);
+        console.log("Navigate to this and authorise:\n" + process.env
+            .HOST + "oauth/authorize?oauth_token=" + payload.token);
     };
     OauthConnection.prototype.bodyMapper = function (payload, many) {
         if (!payload || !payload.data)
