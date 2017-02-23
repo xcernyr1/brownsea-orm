@@ -21,7 +21,7 @@ interface Test {
 }
 var OAuth = require('oauth').OAuth2;
 dotenv.config({silent: true});
-describe('Scouts Staging Server Test', function() {
+describe.only('Scouts Staging Server Test', function() {
   let connection: OauthConnection;
   before(function(done) {
     this.timeout(30000);
@@ -69,7 +69,7 @@ describe('Scouts Staging Server Test', function() {
       return connection.post('/api/project', {
     "title": "Year end Planning 2017",
     "description": "How to plan this year.",
-    "pictures": [1148796, 1148791],
+    "pictures": ["https://s3.amazonaws.com/owler-image/logo/nextfaze_owler_20160301_122905_original.png"],
     "language": "en",
     "from_date": "2017-01-20",
     "to_date": "2017-02-02",

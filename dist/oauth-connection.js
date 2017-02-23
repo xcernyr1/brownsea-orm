@@ -176,7 +176,7 @@ var OauthConnection = (function () {
                 });
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         browser.visit(url, function (err) {
-                            if (err)
+                            if (err && err.message !== 'No XML parser found')
                                 return reject(err);
                             browser.fill('name', _this.username)
                                 .fill('pass', _this.password)

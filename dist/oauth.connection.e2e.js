@@ -16,7 +16,15 @@ describe('Scouts Staging Server Test', function () {
             password: process.env.PASS,
             host: process.env.HOST
         });
-        connection.connect().then(function () { done(); }).catch(done);
+        connection.connect()
+            .then(function () {
+            debugger;
+            done();
+        })
+            .catch(function (err) {
+            debugger;
+            done();
+        });
     });
     it('should connect', function (done) {
         chai_1.expect(connection.isAuthorised).to.be.true;

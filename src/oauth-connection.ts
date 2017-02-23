@@ -126,7 +126,7 @@ export class OauthConnection {
     });
     return new Promise((resolve, reject) => {
       browser.visit(url, (err) => {
-        if (err) return reject(err);
+        if (err && err.message !== 'No XML parser found') return reject(err);
         browser.fill('name', this.username)
             .fill('pass', this.password)
             .pressButton('op', (err, res, body) => {
