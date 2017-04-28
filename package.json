@@ -51,6 +51,6 @@
   },
   "peerDependencies": {
     "loopback-component-passport": "^3.2.0",
-    "passport-oauth2": "https://github.com/NextFaze/passport-oauth2#develop"
+    "passport-oauth2": "^1.4.0"
   }
 }
