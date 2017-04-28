@@ -5,7 +5,7 @@ var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var ensureLoggedIn = require('connect-ensure-login');
 function configurePassport(app, accessToken, user, identity, credential, config) {
     var passportConfigurator = new PassportConfigurator(app);
-    passportConfigurator.init();
+    passportConfigurator.init(false);
     passportConfigurator.setupModels({
         userModel: user,
         userIdentityModel: identity,

@@ -6,7 +6,7 @@ export function configurePassport(app, accessToken, user, identity, credential, 
 
   var passportConfigurator = new PassportConfigurator(app);
 
-  passportConfigurator.init();
+  passportConfigurator.init(false);
 
   passportConfigurator.setupModels({
     userModel: user,

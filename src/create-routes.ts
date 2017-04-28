@@ -1,5 +1,4 @@
 import * as url from 'url';
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 export function createRoutes(app, options) {
     app.get('/', function (req, res, next) {
@@ -8,16 +7,15 @@ export function createRoutes(app, options) {
             url: req.url,
         });
     });
-    app.get('/auth/account', ensureLoggedIn('/api/v1/users/login'), (req, res, next) => {
-        let token = req.accessToken.toObject()
+    app.get('/auth/account', (req, res, next) => {
         let _redirect = url.format({
             protocol: options.protocool,
             port: options.port,
             hostname: options.hostname,
             query: {
-                created: token.created,
-                id: token.id,
-                userId: token.userId
+                created: Date.now(),
+                id: req.query['access-token'],
+                userId: req.query['user-id']
             }
         })
         res.redirect(_redirect)
