@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
-    "test": "mocha ./dist/**/*.{e2e,spec}.js",
+    "test": "mocha ./dist/**/scouts-endpoints.e2e.js",
     "test:debug": "npm run build && mocha --debug ./dist/**/*.{e2e,spec}.js",
     "build:tsc": "npm run clean && tsc",
     "build": "npm run build:tsc",
@@ -40,7 +40,6 @@
     "chance": "^1.0.4",
     "connect-ensure-login": "^0.1.1",
     "dotenv": "^2.0.0",
-    "loopback-component-passport": "^2.3.0",
     "oauth": "^0.9.14",
     "passport-drupal": "https://github.com/NextFaze/passport-drupal.git",
     "passport-strategy": "^1.0.0",
@@ -50,5 +49,9 @@
     "typescript": "^2.1.4",
     "urllib": "^2.19.0",
     "zombie": "^5.0.5"
+  },
+  "peerDependencies": {
+    "loopback-component-passport": "^3.2.0",
+    "passport-oauth2": "https://github.com/NextFaze/passport-oauth2#develop"
   }
 }
