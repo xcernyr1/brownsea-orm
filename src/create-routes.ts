@@ -1,12 +1,12 @@
 import * as url from 'url';
 
 export function createRoutes(app, options) {
-    app.get('/', function (req, res, next) {
-        res.render('pages/index', {
-            user: req.user,
-            url: req.url,
-        });
-    });
+    // app.get('/', function (req, res, next) {
+    //     res.render('pages/index', {
+    //         user: req.user,
+    //         url: req.url,
+    //     });
+    // });
     app.get('/auth/account', (req, res, next) => {
         let _redirect = url.format({
             protocol: options.protocool,
@@ -21,10 +21,10 @@ export function createRoutes(app, options) {
         res.redirect(_redirect)
         delete req.session.passport;
     });
-    app.get('/login', function (req, res, next) {
-        res.render('pages/login', {
-            user: req.user,
-            url: req.url,
-        });
-    });
+    // app.get('/login', function (req, res, next) {
+    //     res.render('pages/login', {
+    //         user: req.user,
+    //         url: req.url,
+    //     });
+    // });
 }
