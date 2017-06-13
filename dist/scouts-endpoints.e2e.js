@@ -6,7 +6,7 @@ var util_1 = require("util");
 var oauth_builder_1 = require("./oauth-builder");
 var OAuth = require('oauth').OAuth2;
 dotenv.config({ silent: true });
-describe.only('Scouts Staging Server Test', function () {
+describe('Scouts Staging Server Test', function () {
     var connection;
     before(function (done) {
         this.timeout(30000);
@@ -49,11 +49,11 @@ describe.only('Scouts Staging Server Test', function () {
     });
     describe('Create Project', function () {
         this.timeout(20000);
-        it.only('should get a great', function () {
-            return connection.post('/api/project', {
+        it('should get a great', function () {
+            return connection.post('/api/v1/project', {
                 "title": "Year end Planning 2017",
                 "description": "How to plan this year.",
-                "pictures": ["https://s3.amazonaws.com/owler-image/logo/nextfaze_owler_20160301_122905_original.png"],
+                "pictures": [1148796],
                 "language": "en",
                 "from_date": "2017-01-20",
                 "to_date": "2017-02-02",
@@ -61,8 +61,16 @@ describe.only('Scouts Staging Server Test', function () {
                 "service_hours": 24,
                 "participants": 1000
             }).then(function (result) {
-                console.log(JSON.stringify(result, null, 2));
                 return result;
+            }).catch(function (errror) {
+            });
+        });
+        it('should create a great image', function () {
+            return connection.post('/api/v1/project-file-upload', {
+                'file-name-1': request("http://www.wkhscounselors.com/images/Pictures/ArticlePics/CollegeCareer/-testing.jpg")
+            }).then(function (result) {
+                return result;
+            }).catch(function (errror) {
             });
         });
     });
