@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Chance = require("chance");
 var chance = new Chance();
 function MockUser(roles) {

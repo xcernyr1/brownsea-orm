@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var url = require("url");
 function createRoutes(app, options) {
     app.get('/auth/account', function (req, res, next) {

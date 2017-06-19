@@ -4,12 +4,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments)).next());
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t;
-    return { next: verb(0), "throw": verb(1), "return": verb(2) };
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -34,6 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var Browser = require('zombie');
 var browser = new Browser({ waitDuration: 60 * 1000 });
 var url_1 = require("url");
@@ -56,19 +57,19 @@ var OauthConnection = (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, this.request()];
+                        return [4, this.request()];
                     case 1:
                         request = _a.sent();
-                        return [4 /*yield*/, this.authorise(request)];
+                        return [4, this.authorise(request)];
                     case 2:
                         authorise = _a.sent();
                         this.access_token = authorise.access_token;
                         this.refresh_token = authorise.refresh_token;
-                        return [2 /*return*/, { connected: true }];
+                        return [2, { connected: true }];
                     case 3:
                         error_1 = _a.sent();
-                        return [2 /*return*/, { connected: false }];
-                    case 4: return [2 /*return*/];
+                        return [2, { connected: false }];
+                    case 4: return [2];
                 }
             });
         });
@@ -82,7 +83,7 @@ var OauthConnection = (function () {
     });
     OauthConnection.prototype.get = function (url, query) {
         return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            return [2 /*return*/, this._request('get', url, null, query)];
+            return [2, this._request('get', url, null, query)];
         }); });
     };
     OauthConnection.prototype.getOne = function (url, query) {
@@ -92,14 +93,14 @@ var OauthConnection = (function () {
         if (body === void 0) { body = {}; }
         if (query === void 0) { query = {}; }
         return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            return [2 /*return*/, this._request('post', url, body, query)];
+            return [2, this._request('post', url, body, query)];
         }); });
     };
     OauthConnection.prototype.patch = function (url, body, query) {
         if (body === void 0) { body = {}; }
         if (query === void 0) { query = {}; }
         return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            return [2 /*return*/, this._request('patch', url, body, query)];
+            return [2, this._request('patch', url, body, query)];
         }); });
     };
     ;
@@ -117,7 +118,7 @@ var OauthConnection = (function () {
                     url: this.host + url,
                     qs: Object.assign(query || {}, { access_token: this.access_token })
                 });
-                return [2 /*return*/, new Promise(function (resolve, reject) {
+                return [2, new Promise(function (resolve, reject) {
                         if (!_this.isAuthorised)
                             console.warn('It appears that access_token || refresh_token are not set');
                         _this.req(options, function (err, res, data) {
@@ -136,7 +137,7 @@ var OauthConnection = (function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve, reject) {
+                return [2, new Promise(function (resolve, reject) {
                         _this.oauth.getOAuthAccessToken(payload.code, { grant_type: 'authorization_code', redirect_uri: 'https://httpbin.org/get' }, function (err, access_token, refresh_token) {
                             if (err)
                                 reject(new errors_1.CustomError({ status: err.statusCode, message: 'Getting OAuth Request Token Failed' }));
@@ -158,7 +159,7 @@ var OauthConnection = (function () {
                     scope: 'api',
                     redirect_uri: 'https://httpbin.org/get'
                 });
-                return [2 /*return*/, new Promise(function (resolve, reject) {
+                return [2, new Promise(function (resolve, reject) {
                         browser.visit(url, function (err) {
                             if (err && err.message !== 'No XML parser found')
                                 return reject(err);

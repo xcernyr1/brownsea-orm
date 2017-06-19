@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var querystring = require('querystring');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 var mock_scout_user_1 = require("./mock-scout-user");

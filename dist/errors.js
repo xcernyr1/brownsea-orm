@@ -1,14 +1,20 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
 var CustomError = (function (_super) {
     __extends(CustomError, _super);
     function CustomError(options) {
         if (options === void 0) { options = {}; }
-        var _this;
+        var _this = this;
         var status = options.status, message = options.message, lib = options.lib, body = options.body;
         _this = _super.call(this, message) || this;
         _this.status = status;
@@ -23,7 +29,7 @@ var Error500 = (function (_super) {
     __extends(Error500, _super);
     function Error500(body) {
         if (body === void 0) { body = {}; }
-        var _this;
+        var _this = this;
         var options = Object.assign({}, {
             status: 500,
             message: "Unknown Server Error"
@@ -38,7 +44,7 @@ var Error404 = (function (_super) {
     __extends(Error404, _super);
     function Error404(body) {
         if (body === void 0) { body = {}; }
-        var _this;
+        var _this = this;
         var options = Object.assign({}, {
             status: 404,
             message: "Resource Not Found"
@@ -53,7 +59,7 @@ var Error400 = (function (_super) {
     __extends(Error400, _super);
     function Error400(body) {
         if (body === void 0) { body = {}; }
-        var _this;
+        var _this = this;
         var options = Object.assign({}, {
             status: 400,
             message: "Validation Errors"

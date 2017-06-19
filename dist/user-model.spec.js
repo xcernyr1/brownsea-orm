@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv = require("dotenv");
 var mock_oauth_1 = require("./mock-oauth");
 var mock_request_1 = require("./mock-request");

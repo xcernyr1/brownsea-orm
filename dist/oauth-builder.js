@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var oauth_connection_1 = require("./oauth-connection");
 exports.REQUEST_TOKEN = '/oauth2/token';
 exports.ACCESS_TOKEN = '/oauth2/token';

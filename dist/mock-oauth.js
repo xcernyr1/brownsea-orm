@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var MockOauth = (function () {
     function MockOauth(reqEnd, accEnd, key, secret, version, callbackUrl, signatureMethod) {
         this.requestToken = 'REQUESTTOKEN';
