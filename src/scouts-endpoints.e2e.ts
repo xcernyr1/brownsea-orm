@@ -31,7 +31,11 @@ describe('Scouts Staging Server Test', function() {
       password: process.env.PASS,
       host: process.env.HOST
     });
-    connection.connect().then(() => { done(); }).catch(done);
+    connection.connect()
+        .then(() => {
+          done();
+        })
+        .catch(done);
   });
   it('should connect', done => {
     expect(connection.isAuthorised).to.be.true;
@@ -62,42 +66,33 @@ describe('Scouts Staging Server Test', function() {
         })
         .catch(done);
   });
-  describe('Create Project', function () {
+  describe('Create Project', function() {
     it('should get a great', () => {
-      return connection.post('/api/v1/project', {
-    "title": "Year end Planning 2017",
-    "description": "How to plan this year.",
-    "pictures": [1148796],
-    "language": "en",
-    "from_date": "2017-01-20",
-    "to_date": "2017-02-02",
-    "categories": "Dialogue, Health",
-    "service_hours": 24,
-    "participants": 1000
-}).then((result) => {
-  // console.log('-----------------------------');
-  // console.log(JSON.stringify(result, null, 2));
-  // console.log('-----------------------------');
-  return result
-}).catch((errror) => {
-  // console.log('-----------------------------');
-  // console.log(errror);
-  // console.log('-----------------------------');
-});
+      return connection
+          .post('/api/v1/project', {
+            'title': 'Year end Planning 2017',
+            'description': 'How to plan this year.',
+            'pictures': [1148796],
+            'language': 'en',
+            'from_date': '2017-01-20',
+            'to_date': '2017-02-02',
+            'categories': 'Dialogue, Health',
+            'service_hours': 24,
+            'participants': 1000
+          })
+          .then((result) => {return result});
     })
-    it('should create a great image', () => {
-      return connection.post('/api/v1/project-file-upload', {
-    'file-name-1': request("http://www.wkhscounselors.com/images/Pictures/ArticlePics/CollegeCareer/-testing.jpg")
-}).then((result) => {
-  // console.log('--------------file---------------');
-  // console.log(JSON.stringify(result, null, 2));
-  // console.log('--------------file---------------');
-  return result
-}).catch((errror) => {
-  // console.log('--------------file-error---------------');
-  // console.log(errror);
-  // console.log('--------------file-error---------------');
-});
+    it.skip('should create a great image', () => {
+      return connection
+          .post('/api/v1/project-file-upload', {
+            'file-name-1': request(
+                'http://www.wkhscounselors.com/images/Pictures/ArticlePics/CollegeCareer/-testing.jpg')
+          })
+          .then(
+              (result) => {// console.log('--------------file---------------');
+                           // console.log(JSON.stringify(result, null, 2));
+                           // console.log('--------------file---------------');
+                           return result});
     })
   })
   describe('PAGINATION', () => {
@@ -117,7 +112,9 @@ describe('Scouts Staging Server Test', function() {
       test.endpoints.forEach(endpoint => {
         describe(`testing endpoint ${endpoint} ${test.description}`, () => {
           test.tests.forEach((_test) => {
-            it(`tests that page[size] ${ _test.payload.query.page.size} and page[number] ${ _test.payload.query.page.number}`,
+            it(`tests that page[size] ${
+                                        _test.payload.query.page.size
+                                      } and page[number] ${_test.payload.query.page.number}`,
                (done) => {
                  connection.get(endpoint, _test.payload.query)
                      .then(payload => {
@@ -141,24 +138,15 @@ describe('Scouts Staging Server Test', function() {
         description: 'to ensure that filter is working',
         tests: [
           {
-            payload: {
-              query: {
-                filter: {name: 'socialfunding'},
-                page: {number: 1, size: 10}
-              }
-            },
+            payload: {query: {filter: {name: 'socialfunding'}, page: {number: 1, size: 10}}},
             result: {length: 1}
           },
           {
-            payload:
-                {query: {filter: {country: '84'}, page: {number: 1, size: 10}}},
+            payload: {query: {filter: {country: '84'}, page: {number: 1, size: 10}}},
             result: {length: 10}
           },
           {
-            payload: {
-              query:
-                  {filter: {firstName: 'John'}, page: {number: 1, size: 40}}
-            },
+            payload: {query: {filter: {firstName: 'John'}, page: {number: 1, size: 40}}},
             result: {length: 40}
           },
         ]
@@ -168,20 +156,11 @@ describe('Scouts Staging Server Test', function() {
         description: 'to ensure that filter is working',
         tests: [
           {
-            payload: {
-              query:
-                  {filter: {name: 'Australia'}, page: {number: 5, size: 10}}
-            },
+            payload: {query: {filter: {name: 'Australia'}, page: {number: 5, size: 10}}},
             result: {length: 1}
           },
-          {
-            payload: {query: {filter: {vid: 1}, page: {number: 1, size: 20}}},
-            result: {length: 20}
-          },
-          {
-            payload: {query: {filter: {id: 1}, page: {number: 1, size: 40}}},
-            result: {length: 1}
-          },
+          {payload: {query: {filter: {vid: 1}, page: {number: 1, size: 20}}}, result: {length: 20}},
+          {payload: {query: {filter: {id: 1}, page: {number: 1, size: 40}}}, result: {length: 1}},
         ]
       }
 
@@ -190,7 +169,7 @@ describe('Scouts Staging Server Test', function() {
       test.endpoints.forEach(endpoint => {
         describe(`testing endpoint ${endpoint} ${test.description}`, () => {
           test.tests.forEach((_test: any) => {
-            it(`tests that filter[${ Object.keys(_test.payload.query.filter)[0]}] works `,
+            it(`tests that filter[${Object.keys(_test.payload.query.filter)[0]}] works `,
                (done) => {
                  connection.get(endpoint, _test.payload.query)
                      .then(payload => {

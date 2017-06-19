@@ -16,7 +16,11 @@ describe('Scouts Staging Server Test', function () {
             password: process.env.PASS,
             host: process.env.HOST
         });
-        connection.connect().then(function () { done(); }).catch(done);
+        connection.connect()
+            .then(function () {
+            done();
+        })
+            .catch(done);
     });
     it('should connect', function (done) {
         chai_1.expect(connection.isAuthorised).to.be.true;
@@ -48,27 +52,27 @@ describe('Scouts Staging Server Test', function () {
     });
     describe('Create Project', function () {
         it('should get a great', function () {
-            return connection.post('/api/v1/project', {
-                "title": "Year end Planning 2017",
-                "description": "How to plan this year.",
-                "pictures": [1148796],
-                "language": "en",
-                "from_date": "2017-01-20",
-                "to_date": "2017-02-02",
-                "categories": "Dialogue, Health",
-                "service_hours": 24,
-                "participants": 1000
-            }).then(function (result) {
-                return result;
-            }).catch(function (errror) {
-            });
+            return connection
+                .post('/api/v1/project', {
+                'title': 'Year end Planning 2017',
+                'description': 'How to plan this year.',
+                'pictures': [1148796],
+                'language': 'en',
+                'from_date': '2017-01-20',
+                'to_date': '2017-02-02',
+                'categories': 'Dialogue, Health',
+                'service_hours': 24,
+                'participants': 1000
+            })
+                .then(function (result) { return result; });
         });
-        it('should create a great image', function () {
-            return connection.post('/api/v1/project-file-upload', {
-                'file-name-1': request("http://www.wkhscounselors.com/images/Pictures/ArticlePics/CollegeCareer/-testing.jpg")
-            }).then(function (result) {
+        it.skip('should create a great image', function () {
+            return connection
+                .post('/api/v1/project-file-upload', {
+                'file-name-1': request('http://www.wkhscounselors.com/images/Pictures/ArticlePics/CollegeCareer/-testing.jpg')
+            })
+                .then(function (result) {
                 return result;
-            }).catch(function (errror) {
             });
         });
     });
@@ -109,12 +113,7 @@ describe('Scouts Staging Server Test', function () {
                 description: 'to ensure that filter is working',
                 tests: [
                     {
-                        payload: {
-                            query: {
-                                filter: { name: 'socialfunding' },
-                                page: { number: 1, size: 10 }
-                            }
-                        },
+                        payload: { query: { filter: { name: 'socialfunding' }, page: { number: 1, size: 10 } } },
                         result: { length: 1 }
                     },
                     {
@@ -122,9 +121,7 @@ describe('Scouts Staging Server Test', function () {
                         result: { length: 10 }
                     },
                     {
-                        payload: {
-                            query: { filter: { firstName: 'John' }, page: { number: 1, size: 40 } }
-                        },
+                        payload: { query: { filter: { firstName: 'John' }, page: { number: 1, size: 40 } } },
                         result: { length: 40 }
                     },
                 ]
@@ -134,19 +131,11 @@ describe('Scouts Staging Server Test', function () {
                 description: 'to ensure that filter is working',
                 tests: [
                     {
-                        payload: {
-                            query: { filter: { name: 'Australia' }, page: { number: 5, size: 10 } }
-                        },
+                        payload: { query: { filter: { name: 'Australia' }, page: { number: 5, size: 10 } } },
                         result: { length: 1 }
                     },
-                    {
-                        payload: { query: { filter: { vid: 1 }, page: { number: 1, size: 20 } } },
-                        result: { length: 20 }
-                    },
-                    {
-                        payload: { query: { filter: { id: 1 }, page: { number: 1, size: 40 } } },
-                        result: { length: 1 }
-                    },
+                    { payload: { query: { filter: { vid: 1 }, page: { number: 1, size: 20 } } }, result: { length: 20 } },
+                    { payload: { query: { filter: { id: 1 }, page: { number: 1, size: 40 } } }, result: { length: 1 } },
                 ]
             }
         ];

@@ -5,3 +5,5 @@ typings/
 .env
 .test.hidden
 *.log
+.nyc_output/
+coverage/
