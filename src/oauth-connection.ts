@@ -40,9 +40,9 @@ export class OauthConnection {
       public password?: string) {}
   async connect() {
     try {
-      let request = await this.request();
-      let authorise = await this.authorise(request);
-      this.access_token = authorise.access_token;
+      let request        = await this.request();
+      let authorise      = await this.authorise(request);
+      this.access_token  = authorise.access_token;
       this.refresh_token = authorise.refresh_token
       return {connected: true};
 
@@ -61,24 +61,17 @@ export class OauthConnection {
   get isAuthorised() {
     return Boolean(this.access_token && this.refresh_token);
   }
-  async get(url: string, query?: ScoutQuery): Promise<any> {
-    return this._request('get', url, null, query)
-  }
-  async getOne(url: string, query?: ScoutQuery): Promise<any> {
+  async get(url: string, query?: ScoutQuery):
+      Promise<any>{return this._request('get', url, null, query)} async
+      getOne(url: string, query?: ScoutQuery): Promise<any> {
     return this._request('get', url, null, query, false);
   }
   async post(url: string, body: any = {}, query: ScoutQuery = {}):
-      Promise<any> {
-    return this._request('post', url, body, query)
-  }
+      Promise<any>{return this._request('post', url, body, query)}
 
   async patch(url: string, body: any = {}, query: ScoutQuery = {}):
-      Promise<any> {
-    return this._request('patch', url, body, query)
-  }
-  async _request(
-      method: string, url: string, body: any = {}, query: ScoutQuery = {},
-      many = true) {
+      Promise<any>{return this._request('patch', url, body, query)};
+  async _request(method: string, url: string, body: any = {}, query: ScoutQuery = {}, many = true) {
     let options = Object.assign(this.defaults, {
       method,
       form: body,
@@ -87,36 +80,24 @@ export class OauthConnection {
     });
     return new Promise((resolve, reject) => {
       if (!this.isAuthorised)
-        console.warn(
-            'It appears that access_token || refresh_token are not set');
+        console.warn('It appears that access_token || refresh_token are not set');
       this.req(options, (err, res, data) => {
-        console.log(err);
         if (err) return reject(this._errorHandler(err));
-        if (res.statusCode >= 401)
-          return reject(new Error('Permission Denied'));
-        resolve(
-            Object.assign({}, this.bodyMapper(JSON.parse(data), many), {res}));
+        if (res.statusCode >= 401) return reject(new Error('Permission Denied'));
+        resolve(Object.assign({}, this.bodyMapper(JSON.parse(data), many), {res}));
       });
     });
   }
-  async authorise(payload: any = {}): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.oauth.getOAuthAccessToken(
-          payload.code, {
-            grant_type: 'authorization_code',
-            redirect_uri: 'https://httpbin.org/get'
-          },
-          (err, access_token, refresh_token) => {
-            if (err)
-              reject(new CustomError({
-                status: err.statusCode,
-                message: 'Getting OAuth Request Token Failed'
-              }));
-            resolve({access_token, refresh_token});
-          });
-    })
-  }
-  async request() {
+  async authorise(payload: any = {}): Promise<any>{return new Promise((resolve, reject) => {
+    this.oauth.getOAuthAccessToken(
+        payload.code, {grant_type: 'authorization_code', redirect_uri: 'https://httpbin.org/get'},
+        (err, access_token, refresh_token) => {
+          if (err)
+            reject(new CustomError(
+                {status: err.statusCode, message: 'Getting OAuth Request Token Failed'}));
+          resolve({access_token, refresh_token});
+        });
+  })} async request() {
     let url = this.oauth.getAuthorizeUrl({
       client_secret: this.oauth._clientSecret,
       response_type: 'code',
@@ -138,14 +119,13 @@ export class OauthConnection {
     });
   }
   private _customLoginError(payload: {token: string, secret: string}) {
-    console.log(`Navigate to this and authorise:\n${process.env
-                    .HOST}oauth/authorize?oauth_token=${payload.token}`);
+    console.log(`Navigate to this and authorise:\n${
+                                                    process.env.HOST
+                                                  }oauth/authorize?oauth_token=${payload.token}`);
   }
   private bodyMapper(payload, many) {
-    if (!payload || !payload.data)
-      return many ? {data: [], count: 0} : {data: null, count: 0};
-    return many ? {data: payload.data, count: payload.count} :
-                  {data: payload.data[0], count: 1};
+    if (!payload || !payload.data) return many ? {data: [], count: 0} : {data: null, count: 0};
+    return many ? {data: payload.data, count: payload.count} : {data: payload.data[0], count: 1};
   }
   private _errorHandler(err) {
     switch (err.statusCode) {
@@ -154,13 +134,12 @@ export class OauthConnection {
       case 406:
         return new Error400({body: err, lib: 'Scouts API'});
       default:
-        return new Error500(
-            {body: err, status: err.statusCode, lib: 'Scouts API'});
+        return new Error500({body: err, status: err.statusCode, lib: 'Scouts API'});
     }
   }
   private setTokenAndSecret(payload) {
     const {access_token, refresh_token} = payload;
-    this.access_token = access_token;
+    this.access_token  = access_token;
     this.refresh_token = refresh_token;
   }
 }

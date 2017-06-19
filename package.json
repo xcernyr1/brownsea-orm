@@ -6,8 +6,8 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
-    "test": "mocha ./dist/**/scouts-endpoints.e2e.js",
-    "test:debug": "npm run build && mocha --debug ./dist/**/*.{e2e,spec}.js",
+    "test": "mocha --timeout 60000 \"dist/**/**.{spec,e2e}.js\"",
+    "test:debug": "npm run build && mocha --inspect --timeout 60000 \"dist/**/**.{spec,e2e}.js\"",
     "build:tsc": "npm run clean && tsc",
     "build": "npm run build:tsc",
     "reinstall": "npm cache clean && npm install",

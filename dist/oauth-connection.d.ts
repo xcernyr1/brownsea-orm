@@ -33,6 +33,7 @@ export declare class OauthConnection {
     }>;
     readonly isAuthorised: boolean;
     get(url: string, query?: ScoutQuery): Promise<any>;
+    async: any;
     getOne(url: string, query?: ScoutQuery): Promise<any>;
     post(url: string, body?: any, query?: ScoutQuery): Promise<any>;
     patch(url: string, body?: any, query?: ScoutQuery): Promise<any>;

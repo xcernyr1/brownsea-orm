@@ -81,37 +81,28 @@ var OauthConnection = (function () {
         configurable: true
     });
     OauthConnection.prototype.get = function (url, query) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this._request('get', url, null, query)];
-            });
-        });
+        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/, this._request('get', url, null, query)];
+        }); });
     };
     OauthConnection.prototype.getOne = function (url, query) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this._request('get', url, null, query, false)];
-            });
-        });
+        return this._request('get', url, null, query, false);
     };
     OauthConnection.prototype.post = function (url, body, query) {
         if (body === void 0) { body = {}; }
         if (query === void 0) { query = {}; }
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this._request('post', url, body, query)];
-            });
-        });
+        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/, this._request('post', url, body, query)];
+        }); });
     };
     OauthConnection.prototype.patch = function (url, body, query) {
         if (body === void 0) { body = {}; }
         if (query === void 0) { query = {}; }
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this._request('patch', url, body, query)];
-            });
-        });
+        return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/, this._request('patch', url, body, query)];
+        }); });
     };
+    ;
     OauthConnection.prototype._request = function (method, url, body, query, many) {
         if (body === void 0) { body = {}; }
         if (query === void 0) { query = {}; }
@@ -130,7 +121,6 @@ var OauthConnection = (function () {
                         if (!_this.isAuthorised)
                             console.warn('It appears that access_token || refresh_token are not set');
                         _this.req(options, function (err, res, data) {
-                            console.log(err);
                             if (err)
                                 return reject(_this._errorHandler(err));
                             if (res.statusCode >= 401)
@@ -147,15 +137,9 @@ var OauthConnection = (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        _this.oauth.getOAuthAccessToken(payload.code, {
-                            grant_type: 'authorization_code',
-                            redirect_uri: 'https://httpbin.org/get'
-                        }, function (err, access_token, refresh_token) {
+                        _this.oauth.getOAuthAccessToken(payload.code, { grant_type: 'authorization_code', redirect_uri: 'https://httpbin.org/get' }, function (err, access_token, refresh_token) {
                             if (err)
-                                reject(new errors_1.CustomError({
-                                    status: err.statusCode,
-                                    message: 'Getting OAuth Request Token Failed'
-                                }));
+                                reject(new errors_1.CustomError({ status: err.statusCode, message: 'Getting OAuth Request Token Failed' }));
                             resolve({ access_token: access_token, refresh_token: refresh_token });
                         });
                     })];
@@ -191,14 +175,12 @@ var OauthConnection = (function () {
         });
     };
     OauthConnection.prototype._customLoginError = function (payload) {
-        console.log("Navigate to this and authorise:\n" + process.env
-            .HOST + "oauth/authorize?oauth_token=" + payload.token);
+        console.log("Navigate to this and authorise:\n" + process.env.HOST + "oauth/authorize?oauth_token=" + payload.token);
     };
     OauthConnection.prototype.bodyMapper = function (payload, many) {
         if (!payload || !payload.data)
             return many ? { data: [], count: 0 } : { data: null, count: 0 };
-        return many ? { data: payload.data, count: payload.count } :
-            { data: payload.data[0], count: 1 };
+        return many ? { data: payload.data, count: payload.count } : { data: payload.data[0], count: 1 };
     };
     OauthConnection.prototype._errorHandler = function (err) {
         switch (err.statusCode) {

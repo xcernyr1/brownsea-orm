@@ -18,7 +18,8 @@ export function createRoutes(app, options) {
         userId: req.query['user-id']
       }
     })
-    res.redirect(_redirect) delete req.session.passport;
+    res.redirect(_redirect);
+    delete req.session.passport;
   });
   // app.get('/login', function (req, res, next) {
   //     res.render('pages/login', {

@@ -7,11 +7,9 @@ var term_model_1 = require("./term-model");
 dotenv.config({ silent: true });
 var OAuth = require('oauth').OAuth2;
 describe('Topics model should return topics', function () {
-    this.timeout(30000);
     var connection;
     var topic;
     before(function (done) {
-        this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
             key: process.env.KEY,
             secret: process.env.SECRET,

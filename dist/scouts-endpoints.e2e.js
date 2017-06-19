@@ -9,7 +9,6 @@ dotenv.config({ silent: true });
 describe('Scouts Staging Server Test', function () {
     var connection;
     before(function (done) {
-        this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
             key: process.env.KEY,
             secret: process.env.SECRET,
@@ -48,7 +47,6 @@ describe('Scouts Staging Server Test', function () {
             .catch(done);
     });
     describe('Create Project', function () {
-        this.timeout(20000);
         it('should get a great', function () {
             return connection.post('/api/v1/project', {
                 "title": "Year end Planning 2017",

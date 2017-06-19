@@ -14,11 +14,9 @@ var OAuth = require('oauth').OAuth2;
 
 
 describe('Topics model should return topics', function() {
-  this.timeout(30000);
   let connection: OauthConnection;
   let topic: Term;
   before(function(done) {
-    this.timeout(30000);
     connection = scoutsOauthBuilder(OAuth, request, {
       key: process.env.KEY,
       secret: process.env.SECRET,

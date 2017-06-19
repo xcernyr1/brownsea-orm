@@ -8,7 +8,6 @@ dotenv.config({ silent: true });
 describe('Scouts Staging Server Test', function () {
     var connection;
     before(function (done) {
-        this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
             key: process.env.KEY,
             secret: process.env.SECRET,

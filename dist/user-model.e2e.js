@@ -7,11 +7,9 @@ var user_model_1 = require("./user-model");
 dotenv.config({ silent: true });
 var OAuth = require('oauth').OAuth2;
 describe('Connector For Scouts Oauth Implementation', function () {
-    this.timeout(30000);
     var connection;
     var userInstance;
     before(function (done) {
-        this.timeout(30000);
         connection = oauth_builder_1.scoutsOauthBuilder(OAuth, request, {
             key: process.env.KEY,
             secret: process.env.SECRET,
