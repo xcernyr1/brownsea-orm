@@ -12,14 +12,10 @@ export function createRoutes(app, options) {
       protocol: options.protocol,
       port: options.port,
       hostname: options.hostname,
-      query: {
-        created: Date.now(),
-        id: req.query['access-token'],
-        userId: req.query['user-id']
-      }
+      query: {created: Date.now(), id: req.query['access-token'], userId: req.query['user-id']}
     })
     res.redirect(_redirect);
-    delete req.session.passport;
+    if (req.session && req.session.passport) delete req.session.passport;
   });
   // app.get('/login', function (req, res, next) {
   //     res.render('pages/login', {
