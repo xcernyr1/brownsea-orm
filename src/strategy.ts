@@ -1,5 +1,5 @@
-var util = require('util');
-var Strategy = require('passport-strategy');
+var util           = require('util');
+var Strategy       = require('passport-strategy');
 var OAuth2Strategy = require('passport-oauth2');
 
 function MockStrategy(options, verify) {
@@ -7,57 +7,54 @@ function MockStrategy(options, verify) {
   Strategy.call(this);
 }
 function ScoutStrategy(options, verify) {
-  this._resource = options.resource;
-  this._whoamiURL = options.whoamiURL || '/api/current-user';
+  this._resource   = options.resource;
+  this._whoamiURL  = options.whoamiURL || '/api/current-user';
   this._profileURL = options.profileURL;
-  this._verify = verify;
+  this._verify     = verify;
   OAuth2Strategy.call(this, options, verify);
 }
 util.inherits(MockStrategy, Strategy);
 util.inherits(ScoutStrategy, OAuth2Strategy);
 ScoutStrategy.prototype.userProfile = function(accessToken, done) {
 
-  this._oauth2.get(
-      `${this._resource}${this._whoamiURL}`, accessToken,
-      (err, body, other) => {
-        if (err) return done(err);
-        try {
-          var json = JSON.parse(body);
-          var id = json.data[0].uid;
-        } catch (err) {
-          return done(err);
-        }
-        this._oauth2.get(
-            `${this._resource}${this._profileURL}/${id}`, accessToken,
-            function(err, body, other) {
-              if (err) return done(err);
-              try {
-                var json = JSON.parse(body);
-                var id = json.data[0].id + '';
-                var user = json.data[0];
-                var profile = {
-                  _json: json.data[0],
-                  _raw: body,
-                  provider: 'scout',
-                  id: id,
-                  username: user.name,
-                  profileImage: user.profileImage,
-                  name: {givenName: user.firstName, lastName: user.lastName},
-                  country: user.country,
-                  organisation: user.organisation,
-                  emails: [{value: user.email}],
-                  profileURL: user.self
-                };
-                return done(null, profile);
-              } catch (err) {
-                return done(err);
-              }
-            });
-      });
+  this._oauth2.get(`${this._resource}${this._whoamiURL}`, accessToken, (err, body, other) => {
+    if (err) return done(err);
+    try {
+      var json = JSON.parse(body);
+      var id   = json.data[0].uid;
+    } catch (err) {
+      return done(err);
+    }
+    this._oauth2.get(
+        `${this._resource}${this._profileURL}/${id}`, accessToken, function(err, body, other) {
+          if (err) return done(err);
+          try {
+            var json    = JSON.parse(body);
+            var id      = json.data[0].id + '';
+            var user    = json.data[0];
+            var profile = {
+              _json: json.data[0],
+              _raw: body,
+              provider: 'scout',
+              id: id,
+              username: user.username,
+              profileImage: user.profileImage,
+              name: {givenName: user.firstName, lastName: user.lastName},
+              country: user.country,
+              organisation: user.organisation,
+              emails: [{value: user.email}],
+              profileURL: user.self
+            };
+            return done(null, profile);
+          } catch (err) {
+            return done(err);
+          }
+        });
+  });
 };
 MockStrategy.prototype.authenticate = function(req, options) {
   var self = this;
-  let a = self._verify.length;
+  let a    = self._verify.length;
   function verified(err, user, info) {
     if (err) {
       return self.error(err);
@@ -80,8 +77,7 @@ MockStrategy.prototype.authenticate = function(req, options) {
       },
       verified);
 };
-MockStrategy.prototype.userProfile = function(
-    token, tokenSecret, params, done) {
+MockStrategy.prototype.userProfile = function(token, tokenSecret, params, done) {
   done(null, {displayName: 'Paul Robinson', email: 'email@email.com'});
 };
 
