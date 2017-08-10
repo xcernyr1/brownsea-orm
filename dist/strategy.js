@@ -38,7 +38,7 @@ ScoutStrategy.prototype.userProfile = function (accessToken, done) {
                     _raw: body,
                     provider: 'scout',
                     id: id,
-                    username: user.username,
+                    username: user.username || user.name,
                     profileImage: user.profileImage,
                     name: { givenName: user.firstName, lastName: user.lastName },
                     country: user.country,
