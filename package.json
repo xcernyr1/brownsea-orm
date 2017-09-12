@@ -1,6 +1,6 @@
 {
   "name": "@scouts/brownsea-orm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An Object Mapper for the scouts.org API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
