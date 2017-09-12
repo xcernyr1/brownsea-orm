@@ -41,7 +41,7 @@ pipeline {
     stage ('publish') {
       when { branch 'master' }
       steps {
-        configFileProvider ([configFile (fileId: 'GLOBAL_NPMRC', targetLocation: '.npmrc')]) {
+        configFileProvider ([configFile (fileId: 'HOSTED_NPMRC', targetLocation: '.npmrc')]) {
           sh "npm publish --verbose"
         }
       }
