@@ -15,6 +15,7 @@ pipeline {
       }
     }
     stage ('test') {
+      when { not {branch 'master'} }
       steps {
         configFileProvider ([configFile (fileId: 'BROWNSEA_ORM_ENV', targetLocation: '.env')]) {
           sh 'npm run test:ci'
