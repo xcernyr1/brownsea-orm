@@ -72,7 +72,7 @@ describe('Scouts Staging Server Test', function() {
           .post('/api/v1/project', {
             'title': 'Year end Planning 2017',
             'description': 'How to plan this year.',
-            'pictures': [1148796],
+            'pictures': [],
             'language': 'en',
             'from_date': '2017-01-20',
             'to_date': '2017-02-02',
@@ -167,7 +167,7 @@ describe('Scouts Staging Server Test', function() {
     ];
     userTests.forEach((test) => {
       test.endpoints.forEach(endpoint => {
-        describe(`testing endpoint ${endpoint} ${test.description}`, () => {
+        describe.skip(`testing endpoint ${endpoint} ${test.description}`, () => {
           test.tests.forEach((_test: any) => {
             it(`tests that filter[${Object.keys(_test.payload.query.filter)[0]}] works `,
                (done) => {

@@ -41,8 +41,8 @@ describe('Topics model should return topics', function() {
   })
   it('should get many topics', done => {
     Term.find()
-        .then((_terms: any) => {
-          assert.lengthOf(_terms, 50);
+        .then((_terms) => {
+          assert.isAtLeast(_terms.count, 50);
           done();
         })
         .catch(done);
