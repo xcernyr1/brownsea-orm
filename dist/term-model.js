@@ -73,9 +73,9 @@ var Term = (function (_super) {
         var _query = Object.assign({}, query, { filter: Object.assign(query.filter || {}, { vid: vid }) });
         return _query;
     };
+    Term.modelName = 'term';
+    Term.Model = Term;
     return Term;
 }(base_model_1.BaseModel));
-Term.modelName = 'term';
-Term.Model = Term;
 exports.Term = Term;
 //# sourceMappingURL=term-model.js.map

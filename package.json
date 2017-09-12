@@ -1,6 +1,6 @@
 {
-  "name": "@nextfaze/brownsea-orm",
-  "version": "0.0.3",
+  "name": "@scouts/brownsea-orm",
+  "version": "1.0.0",
   "description": "An Object Mapper for the scouts.org API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

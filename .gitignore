@@ -1,7 +1,7 @@
 node_modules/
 typings/
 .vscode/
-
+dist/
 .env
 .test.hidden
 *.log

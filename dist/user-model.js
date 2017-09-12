@@ -16,9 +16,9 @@ var User = (function (_super) {
     function User(user) {
         return _super.call(this, user) || this;
     }
+    User.modelName = 'user';
+    User.Model = User;
     return User;
 }(base_model_1.BaseModel));
-User.modelName = 'user';
-User.Model = User;
 exports.User = User;
 //# sourceMappingURL=user-model.js.map

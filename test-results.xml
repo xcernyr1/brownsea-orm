@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.028000000000000004" tests="49" failures="33" skipped="6">
+  <testsuite name="Root Suite" timestamp="2017-09-12T10:34:41" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Errors" timestamp="2017-09-12T10:34:41" tests="3" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/error.spec.js" failures="0" time="0.002">
+    <testcase name="Errors Error404 should have status 404" time="0.002" classname="Error404 should have status 404">
+    </testcase>
+    <testcase name="Errors Error400 should have status 400" time="0" classname="Error400 should have status 400">
+    </testcase>
+    <testcase name="Errors Error500 should have status 500" time="0" classname="Error500 should have status 500">
+    </testcase>
+  </testsuite>
+  <testsuite name="MockOauth" timestamp="2017-09-12T10:34:42" tests="7" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/mock-oauth.spec.js" failures="0" time="0.004">
+    <testcase name="MockOauth .getOAuthRequestToken" time="0.001" classname=".getOAuthRequestToken">
+    </testcase>
+    <testcase name="MockOauth .getOAuthAccesToken" time="0.001" classname=".getOAuthAccesToken">
+    </testcase>
+    <testcase name="MockOauth ._perfomSecureRequest" time="0" classname="._perfomSecureRequest">
+    </testcase>
+    <testcase name="MockOauth .get" time="0.001" classname=".get">
+    </testcase>
+    <testcase name="MockOauth .delete" time="0" classname=".delete">
+    </testcase>
+    <testcase name="MockOauth .post" time="0" classname=".post">
+    </testcase>
+    <testcase name="MockOauth .put" time="0.001" classname=".put">
+    </testcase>
+  </testsuite>
+  <testsuite name="Mock Connector For Scouts Oauth Implementation" timestamp="2017-09-12T10:34:42" tests="5" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Scouts Staging Server Test" timestamp="2017-09-12T10:34:42" tests="1" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/oauth.connection.e2e.js" failures="1" time="0.002">
+    <testcase name="Scouts Staging Server Test should connect" time="0.002" classname="should connect">
+      <failure><![CDATA[AssertionError: expected false to be true
+    at Context.<anonymous> (dist/oauth.connection.e2e.js:1:3740)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Scouts Staging Server Test" timestamp="2017-09-12T10:34:42" tests="3" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="3" time="0.004">
+    <testcase name="Scouts Staging Server Test should connect" time="0" classname="should connect">
+      <failure><![CDATA[AssertionError: expected false to be true
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:9934)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test User: simple registration POST /user-registration" time="0.003" classname="User: simple registration POST /user-registration">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:39161)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.post (dist/oauth-connection.js:1:38980)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:10118)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test User: test get current user relevant to access token" time="0.001" classname="User: test get current user relevant to access token">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:10577)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Create Project" timestamp="2017-09-12T10:34:42" tests="2" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="1" time="0">
+    <testcase name="Scouts Staging Server Test Create Project should get a great" time="0" classname="should get a great">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:39161)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.post (dist/oauth-connection.js:1:38980)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:10957)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="PAGINATION" timestamp="2017-09-12T10:34:42" tests="0" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="testing endpoint /api/user to ensure that pagination is working" timestamp="2017-09-12T10:34:42" tests="3" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="3" time="0.002">
+    <testcase name="Scouts Staging Server Test PAGINATION testing endpoint /api/user to ensure that pagination is working tests that page[size] 10 and page[number] 5" time="0.001" classname="tests that page[size] 10 and page[number] 5">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:12629)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test PAGINATION testing endpoint /api/user to ensure that pagination is working tests that page[size] 20 and page[number] 1" time="0.001" classname="tests that page[size] 20 and page[number] 1">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:12629)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test PAGINATION testing endpoint /api/user to ensure that pagination is working tests that page[size] 40 and page[number] 1" time="0" classname="tests that page[size] 40 and page[number] 1">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:12629)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="testing endpoint /api/term to ensure that pagination is working" timestamp="2017-09-12T10:34:42" tests="3" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="3" time="0.002">
+    <testcase name="Scouts Staging Server Test PAGINATION testing endpoint /api/term to ensure that pagination is working tests that page[size] 10 and page[number] 5" time="0" classname="tests that page[size] 10 and page[number] 5">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:12629)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test PAGINATION testing endpoint /api/term to ensure that pagination is working tests that page[size] 20 and page[number] 1" time="0.001" classname="tests that page[size] 20 and page[number] 1">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:12629)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test PAGINATION testing endpoint /api/term to ensure that pagination is working tests that page[size] 40 and page[number] 1" time="0.001" classname="tests that page[size] 40 and page[number] 1">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:12629)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="FILTER" timestamp="2017-09-12T10:34:42" tests="0" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="testing endpoint /api/user to ensure that filter is working" timestamp="2017-09-12T10:34:42" tests="3" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="3" time="0.002">
+    <testcase name="Scouts Staging Server Test FILTER testing endpoint /api/user to ensure that filter is working tests that filter[name] works " time="0.001" classname="tests that filter[name] works ">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:14342)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test FILTER testing endpoint /api/user to ensure that filter is working tests that filter[country] works " time="0.001" classname="tests that filter[country] works ">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:14342)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test FILTER testing endpoint /api/user to ensure that filter is working tests that filter[firstName] works " time="0" classname="tests that filter[firstName] works ">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:14342)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="testing endpoint /api/term to ensure that filter is working" timestamp="2017-09-12T10:34:42" tests="3" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/scouts-endpoints.e2e.js" failures="3" time="0.002">
+    <testcase name="Scouts Staging Server Test FILTER testing endpoint /api/term to ensure that filter is working tests that filter[name] works " time="0.001" classname="tests that filter[name] works ">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:14342)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test FILTER testing endpoint /api/term to ensure that filter is working tests that filter[vid] works " time="0" classname="tests that filter[vid] works ">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:14342)]]></failure>
+    </testcase>
+    <testcase name="Scouts Staging Server Test FILTER testing endpoint /api/term to ensure that filter is working tests that filter[id] works " time="0.001" classname="tests that filter[id] works ">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Context.<anonymous> (dist/scouts-endpoints.e2e.js:1:14342)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Topics model should return topics" timestamp="2017-09-12T10:34:42" tests="13" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/term-model.e2e.js" failures="13" time="0.008">
+    <testcase name="Topics model should return topics should get a topic" time="0.002" classname="should get a topic">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.getOne (dist/oauth-connection.js:1:38550)
+    at Function.<anonymous> (dist/base-model.js:1:27097)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.findById (dist/base-model.js:1:26863)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:10639)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many topics" time="0.001" classname="should get many topics">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:10957)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many tags" time="0.001" classname="should get many tags">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.tags (dist/term-model.js:1:14598)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:11240)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many topics" time="0" classname="should get many topics">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.categories (dist/term-model.js:1:14869)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:11538)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many question_categories" time="0" classname="should get many question_categories">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.question_categories (dist/term-model.js:1:15149)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:11857)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many organization" time="0.001" classname="should get many organization">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.<anonymous> (dist/base-model.js:1:28904)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.findAll (dist/base-model.js:1:28584)
+    at Function.Term.getByVid (dist/term-model.js:1:17926)
+    at Function.Term.organization (dist/term-model.js:1:15423)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:12180)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many topics_news" time="0" classname="should get many topics_news">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.topics_news (dist/term-model.js:1:15696)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:12536)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many topics_events" time="0" classname="should get many topics_events">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.topics_events (dist/term-model.js:1:15973)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:12852)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many countries" time="0.001" classname="should get many countries">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.countries (dist/term-model.js:1:16246)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:13166)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many languages" time="0.001" classname="should get many languages">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.languages (dist/term-model.js:1:16519)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:13476)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many topics_tutorials" time="0.001" classname="should get many topics_tutorials">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.topics_tutorials (dist/term-model.js:1:16800)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:13793)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many associations" time="0" classname="should get many associations">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.scouting_interests (dist/term-model.js:1:17083)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:14113)]]></failure>
+    </testcase>
+    <testcase name="Topics model should return topics should get many scouting_interests" time="0" classname="should get many scouting_interests">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Function.Term.getByVid (dist/term-model.js:1:17827)
+    at Function.Term.associations (dist/term-model.js:1:17360)
+    at Context.<anonymous> (dist/term-model.e2e.js:1:14441)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Connector For Scouts Oauth Implementation" timestamp="2017-09-12T10:34:42" tests="2" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/user-model.e2e.js" failures="2" time="0">
+    <testcase name="Connector For Scouts Oauth Implementation should get a user" time="0" classname="should get a user">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.getOne (dist/oauth-connection.js:1:38550)
+    at Function.<anonymous> (dist/base-model.js:1:27097)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.findById (dist/base-model.js:1:26863)
+    at Context.<anonymous> (dist/user-model.e2e.js:1:4286)]]></failure>
+    </testcase>
+    <testcase name="Connector For Scouts Oauth Implementation should get many user" time="0" classname="should get many user">
+      <failure><![CDATA[Error: Unknown Server Error
+    at Error500.CustomError [as constructor] (dist/errors.js:1:10505)
+    at new Error500 (dist/errors.js:1:11328)
+    at OauthConnection._errorHandler (dist/oauth-connection.js:1:45183)
+    at Request._callback (dist/oauth-connection.js:1:41248)
+    at self.callback (node_modules/request/request.js:188:22)
+    at Request.init (node_modules/request/request.js:276:17)
+    at new Request (node_modules/request/request.js:130:8)
+    at OauthConnection.request [as req] (node_modules/request/index.js:54:10)
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:38379)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection.get (dist/oauth-connection.js:1:38200)
+    at Function.<anonymous> (dist/base-model.js:1:27733)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.find (dist/base-model.js:1:27499)
+    at Context.<anonymous> (dist/user-model.e2e.js:1:4592)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Connector For Scouts Oauth Implementation" timestamp="2017-09-12T10:34:42" tests="1" file="/Users/probinson/repos/brownsea/brownsea-orm/dist/user-model.spec.js" failures="1" time="0">
+    <testcase name="Connector For Scouts Oauth Implementation should get a user" time="0" classname="should get a user">
+      <failure><![CDATA[TypeError: _this.req is not a function
+    at dist/oauth-connection.js:1:41092
+    at OauthConnection.<anonymous> (dist/oauth-connection.js:1:40803)
+    at step (dist/oauth-connection.js:1:35646)
+    at Object.next (dist/oauth-connection.js:1:32922)
+    at dist/oauth-connection.js:1:32088
+    at __awaiter (dist/oauth-connection.js:1:31243)
+    at OauthConnection._request (dist/oauth-connection.js:1:40356)
+    at OauthConnection.getOne (dist/oauth-connection.js:1:38550)
+    at Function.<anonymous> (dist/base-model.js:1:27097)
+    at step (dist/base-model.js:1:25529)
+    at Object.next (dist/base-model.js:1:22723)
+    at dist/base-model.js:1:21868
+    at __awaiter (dist/base-model.js:1:21003)
+    at Function.BaseModel.findById (dist/base-model.js:1:26863)
+    at Context.<anonymous> (dist/user-model.spec.js:1:3603)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'ubuntu'
+    label 'docker'
   }
   tools {
     nodejs '6.9.5'
@@ -34,6 +34,14 @@ pipeline {
             reportFiles: 'index.html',
             reportName: 'RCov Report'
           ]
+        }
+      }
+    }
+    stage ('publish') {
+      when { branch 'master' }
+      steps {
+        configFileProvider ([configFile (fileId: NPMRC_FILE_ID, targetLocation: '.npmrc')]) {
+          sh "npm publish --verbose"
         }
       }
     }

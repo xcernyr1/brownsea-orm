@@ -110,8 +110,8 @@ var BaseModel = (function () {
         var rounded = Math.ceil(count / this.MAX_INSTANCES_RETURNED);
         return rounded;
     };
+    BaseModel.MAX_INSTANCES_RETURNED = 50;
     return BaseModel;
 }());
-BaseModel.MAX_INSTANCES_RETURNED = 50;
 exports.BaseModel = BaseModel;
 //# sourceMappingURL=base-model.js.map
