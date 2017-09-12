@@ -42,6 +42,7 @@ pipeline {
       when { branch 'master' }
       steps {
         configFileProvider ([configFile (fileId: 'HOSTED_NPMRC', targetLocation: '.npmrc')]) {
+          sh 'npm run build'
           sh "npm publish --verbose"
         }
       }
