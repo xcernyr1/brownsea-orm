@@ -108,9 +108,9 @@ export class OauthConnection {
     return new Promise((resolve, reject) => {
       browser.visit(url, (err) => {
         if (err && err.message !== 'No XML parser found') return reject(err);
-        browser.fill('name', this.username)
-            .fill('pass', this.password)
-            .pressButton('op', (err, res, body) => {
+        browser.fill('#username', this.username)
+            .fill('#password', this.password)
+            .pressButton('#kc-login', (err, res, body) => {
               let query = parse(browser.location.href, true);
               browser.deleteCookies();
               return err ? reject(err) : resolve(query.query);

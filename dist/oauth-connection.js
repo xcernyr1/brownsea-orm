@@ -163,9 +163,9 @@ var OauthConnection = (function () {
                         browser.visit(url, function (err) {
                             if (err && err.message !== 'No XML parser found')
                                 return reject(err);
-                            browser.fill('name', _this.username)
-                                .fill('pass', _this.password)
-                                .pressButton('op', function (err, res, body) {
+                            browser.fill('#username', _this.username)
+                                .fill('#password', _this.password)
+                                .pressButton('#kc-login', function (err, res, body) {
                                 var query = url_1.parse(browser.location.href, true);
                                 browser.deleteCookies();
                                 return err ? reject(err) : resolve(query.query);
